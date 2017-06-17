@@ -3,7 +3,7 @@
 from ballbase import getdata
 
 
-def process_data()
+def process_data():
     """Process the dataset for analysis
     """
 

@@ -1,7 +1,8 @@
 #!/usr/bin/python
-import urllib
+from urllib import request
 import tarfile
 import os
+
 
 def download_file():
     """Download the dataset from a website
@@ -10,7 +11,7 @@ def download_file():
 
     # Get baseball data in csv form from website
     url = "http://seanlahman.com/files/database/baseballdatabank-2017.1.zip"
-    urllib.request.urlretrieve(url, filename="../baseballdatabank-2017.1.zip")
+    request.urlretrieve(url, filename="../baseballdatabank-2017.1.zip")
 
     # Unzip the dataset in the folder above the repo.
     os.chdir("..")
