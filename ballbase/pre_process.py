@@ -2,6 +2,7 @@
 from __future__ import print_function
 import os
 import pandas as pd
+import numpy as np
 
 
 def standarize_column(column):
@@ -16,6 +17,7 @@ def standarize_column(column):
     value = (column - column.mean()) / column.std()
 
     return value
+
 
 def p_salaries(folder):
     """Function to process through the salaries
@@ -50,7 +52,21 @@ def p_salaries(folder):
     # Use pandas to convert the csv to a dataframe.
     df_salary = pd.read_csv(file_loc)
 
+    # Stanrdize the salary for each year
+    yearly_mean = df_salary.groupby('yearID')['salary'].apply(standarize_column)
 
+    # Merge the new column onto the dataframe
+    df_salary_2 = pd.concat([df_salary, yearly_mean], axis=1)
+
+    # Groupy playerid and then transpose all salary values
+    # using a rather ugly long line of code.
+    player_salaries = df_salary.sort_values('playerID').groupby('playerID')['salary'].apply(lambda df: df.reset_index(drop=True)).unstack()
+
+    player_mean = player_salaries.mean(axis='columns')
+
+    print('')
+    print('Processed Salary data')
+    print(player_mean)
 
 def p_hallfame(folder):
     """Function to process through the hall of fame
