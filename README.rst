@@ -67,11 +67,18 @@ AwardsPlayers
 
 AwardsPlayers gives a value that could be manipulated into a number of awards per player.
 
+Processed to find the number of times a player has recieved an award.
+
+Awards go back to 1877, however the occurence of awards varies over time as the number of awards
+given out per year changes.
+
 ^^^^^^^^^^^
 AllStarFull
 ^^^^^^^^^^^
 
 AllStarFull could also give a number of times present in the All Star game classifier.
+
+Processed to find the number of times a player has played in an all star game.
 
 Data only begins at 1933. The highest number of occurences in all star games is 25 by aaronha01.
 
@@ -80,6 +87,8 @@ HallofFame
 ^^^^^^^^^^
 
 HallofFame can also give a qualifier to compare to.
+
+Processed to find all inducted members within the hall of fame.
 
 Data only begins at 1933. There are 250 players in the hall of fame. 
 

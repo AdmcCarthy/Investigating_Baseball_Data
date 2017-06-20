@@ -4,6 +4,41 @@ import os
 import pandas as pd
 
 
+def p_salaries(folder):
+    """Function to process through the salaries
+    csv file.
+
+    The objective is to find the players salary per year
+    and standardize this so it is comparable to all salaries
+    that year (seeing as salaries amounts change from 1985 to 2016)
+
+    Based on this standardization each players max position year, min position year
+    and average position over all years played will be stored as new columns.
+
+    As well as ranking players their difference compared to the mean will be stored
+    for max year, min year and average of all years played.
+
+    This should allow for relative comparisson of each player
+    even with changing salaries over time.
+
+    Maximum salary value will also be recorded as an additional
+    column.
+
+    Takes folder as a positional argument specifying
+    the folder where the baseballdatabank folder is stored.
+
+    Returns a dataframe fitting the conditions above.
+    """
+
+    # Get file location
+    directory = folder
+    file_loc = os.path.join(directory, "baseballdatabank-2017.1", "core", "Salaries.csv")
+
+    # Use pandas to convert the csv to a dataframe.
+    df_salary = pd.read_csv(file_loc)
+
+
+
 def p_hallfame(folder):
     """Function to process through the hall of fame
     csv file.
