@@ -190,14 +190,14 @@ def p_salaries(folder):
 
     # Stanrdize the salary for each year
     yearly_mean = df_salary.groupby('yearID')['salary'].apply(standarize_column)
-    yearly_mean.name = 'salary_standardized_annualy'
+    yearly_mean.name = 'salary_standardized_annually'
 
     # Merge the new column onto the dataframe
     df_salary_2 = pd.concat([df_salary, yearly_mean], axis=1)
 
     # Groupy player id and then tranpose all standardized salary values
     # get mean, min and max and all players and return.
-    player_std_salary = gpby_tranpose_stats(df_salary_2, 'playerID', 'salary_standardized_annualy')
+    player_std_salary = gpby_tranpose_stats(df_salary_2, 'playerID', 'salary_standardized_annually')
 
     # Concatenate the two dataframes for each player
     df_player_salary_stats = pd.concat([player_salary, player_std_salary], axis=1)

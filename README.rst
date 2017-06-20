@@ -61,6 +61,15 @@ Salaries
 
 Salaries is one option, this data is delivered on a yearly basis. This would need to be manipulated into a single value, e.g. mean yearly salary. However this will not compare well over time so would need to be compared to other salaries in that year.
 
+Salary data has only been collected since 1985. Given that salary changes over time due to a combination of factors it is difficult to
+compare one year to another year.
+
+Processing includes standardizing salary annually to see which players
+earn more than others for each year.
+
+To be able to make some simple comparissons each players career salary information needs to be compressed into single values.
+Min, max and mean have been choosen, for annually standardized and unstandardized.
+
 ^^^^^^^^^^^^^
 AwardsPlayers
 ^^^^^^^^^^^^^
