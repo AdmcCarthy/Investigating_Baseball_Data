@@ -73,6 +73,8 @@ AllStarFull
 
 AllStarFull could also give a number of times present in the All Star game classifier.
 
+Data only begins at 1933. The highest number of occurences in all star games is 25 by aaronha01.
+
 ^^^^^^^^^^
 HallofFame
 ^^^^^^^^^^
@@ -116,3 +118,6 @@ Resources used
 
 Pandas API
 https://pandas.pydata.org/pandas-docs/stable/api.html
+
+StackOverflow for number of times a value occurs in a column
+https://stackoverflow.com/questions/22391433/count-the-frequency-that-a-value-occurs-in-a-dataframe-column

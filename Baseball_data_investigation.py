@@ -16,5 +16,7 @@ def process_data():
 
     df_hallfame = pre_process.p_hallfame(directory)
 
+    df_allstar = pre_process.p_allstar(directory)
+
 if __name__ == '__main__':
     process_data()
