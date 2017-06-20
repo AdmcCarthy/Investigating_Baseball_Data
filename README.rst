@@ -79,7 +79,7 @@ HallofFame
 
 HallofFame can also give a qualifier to compare to.
 
-Data only begins at 1933.
+Data only begins at 1933. There are 250 players in the hall of fame. 
 
 ^^^^^
 Other
