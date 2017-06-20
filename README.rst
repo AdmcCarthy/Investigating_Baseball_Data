@@ -79,6 +79,8 @@ HallofFame
 
 HallofFame can also give a qualifier to compare to.
 
+Data only begins at 1933.
+
 ^^^^^
 Other
 ^^^^^
