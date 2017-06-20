@@ -107,3 +107,10 @@ pre_process
 ^^^^^^^^^^^
 
 Pre-process data to wrangle it into a usable format for a specific problem.
+
+--------------
+Resources used
+--------------
+
+Pandas API
+https://pandas.pydata.org/pandas-docs/stable/api.html
