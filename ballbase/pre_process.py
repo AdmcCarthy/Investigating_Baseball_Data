@@ -207,3 +207,38 @@ def p_salaries(folder):
     print(df_player_salary_stats.head())
 
     return df_player_salary_stats
+
+def p_college_loc(folder):
+    """Function to process both
+    College Playing csv file and Schools
+    csv file.
+
+    Objective is to create a single output
+    stating which college a player attended and
+    where that college is located.
+
+    Some players will have attended more than
+    one educational institute. To solve this issue
+    the institute with the most years will be taken.
+    Given a tie, then the earliers will be choosen.
+
+    The output will be a series of columns for a single
+    institute for each player.
+
+    Takes folder as a positional argument specifying
+    the folder where the baseballdatabank folder is stored.
+
+    Returns a dataframe fitting the conditions above.
+    """
+
+    # Get files
+    directory = folder
+    file_loc = os.path.join(directory, "baseballdatabank-2017.1", "core", "CollegePlaying.csv")
+    df_college = pd.read_csv(file_loc)
+
+    file_loc = os.path.join(directory, "baseballdatabank-2017.1", "core", "Schools.csv")
+    df_schools_dict = pd.read_csv(file_loc)
+
+    
+
+
