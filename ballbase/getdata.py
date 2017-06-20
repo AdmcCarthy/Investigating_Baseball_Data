@@ -1,6 +1,6 @@
 #!/usr/bin/python
 from urllib import request
-import tarfile
+import zipfile
 import os
 
 
@@ -9,8 +9,8 @@ def download_file():
     then unzip it.
     """
 
-    os.chdir("..")
-    if not os.path.isdir("baseballdatabank-2017.1"):
+
+    if not os.path.isdir("../baseballdatabank-2017.1"):
 
         print("Starting download")
         # Get baseball data in csv form from website
@@ -18,8 +18,8 @@ def download_file():
         request.urlretrieve(url, filename="../baseballdatabank-2017.1.zip")
 
         # Unzip the dataset in the folder above the repo.
-        tfile = tarfile.open("baseballdatabank-2017.1.zip", "r:gz")
-        tfile.extractall(".")
+        with zipfile.ZipFile("../baseballdatabank-2017.1.zip", "r") as zfile:
+            zfile.extractall(".")
         print("Data downloaded and unzipped")
         print("This database is copyright 1996-2017 by Sean Lahman.")
         print("Data licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.")
