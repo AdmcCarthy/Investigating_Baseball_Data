@@ -43,11 +43,17 @@ Master
 
 MASTER.csv is a key dataset to lookup playerID along with a number of key attributes needed for investigating where a player is from.
 
-------------------
-Location of player
-------------------
+----------------
+College location
+----------------
 
 CollegePlaying.csv and Schools.csv will need to be manipulated to give the location of the school. This will lead to city, state and country for each school.
+
+One person can attend more than one school. For brevity it is better to reduce this to one selection.
+
+The suggestion is to take the school most attended, if tied take the earliest.
+
+Each players selected school's city, state and country will be appended to the player from Schools.csv
 
 -----------------
 Quality of player

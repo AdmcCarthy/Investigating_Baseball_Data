@@ -36,11 +36,11 @@ def gpby_tranpose_stats(df, group, column):
     group_column = df.sort_values(group).groupby(group)[column].apply(lambda df: df.reset_index(drop=True)).unstack()
 
     # Calculate statistics for all values in a row
-    group_mean = group_column.mean(axis = 'columns')
+    group_mean = group_column.mean(axis='columns')
     group_mean.name = ('mean_'+ str(column))
-    group_max = group_column.max(axis = 'columns')
+    group_max = group_column.max(axis='columns')
     group_max.name = ('max_' + str(column))
-    group_min = group_column.min(axis = 'columns')
+    group_min = group_column.min(axis='columns')
     group_min.name = ('min_' + str(column))
 
     # Combine into a dataframe for output
