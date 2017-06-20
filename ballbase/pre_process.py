@@ -239,6 +239,6 @@ def p_college_loc(folder):
     file_loc = os.path.join(directory, "baseballdatabank-2017.1", "core", "Schools.csv")
     df_schools_dict = pd.read_csv(file_loc)
 
-    
+
 
 

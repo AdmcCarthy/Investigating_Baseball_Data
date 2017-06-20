@@ -6,7 +6,7 @@ from ballbase import (
     pre_process
     )
 
-def process_data():
+def main():
     """Process the dataset for analysis
     """
 
@@ -32,4 +32,4 @@ def process_data():
     pre_process.p_salaries(directory)
 
 if __name__ == '__main__':
-    process_data()
+    main()
