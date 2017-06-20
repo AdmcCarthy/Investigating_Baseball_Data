@@ -4,6 +4,19 @@ import os
 import pandas as pd
 
 
+def standarize_column(column):
+    """ Calculate the standardized
+    value for a column.
+
+    To be used in df.apply
+
+    Modified from Udacity lesson
+    """
+
+    value = (column - column.mean()) / column.std()
+
+    return value
+
 def p_salaries(folder):
     """Function to process through the salaries
     csv file.
@@ -12,8 +25,8 @@ def p_salaries(folder):
     and standardize this so it is comparable to all salaries
     that year (seeing as salaries amounts change from 1985 to 2016)
 
-    Based on this standardization each players max position year, min position year
-    and average position over all years played will be stored as new columns.
+    Based on this standardization each players max year, min year
+    and average over all years played will be stored as new columns.
 
     As well as ranking players their difference compared to the mean will be stored
     for max year, min year and average of all years played.
