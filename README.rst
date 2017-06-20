@@ -17,6 +17,8 @@ Approach to answer question
 
 Take the MASTER.csv table and use this as a central source for unique playerID, this will relate to many other tables.
 
+Attributes will be needed to describe the location each player is from. 
+
 MASTER.csv also contains, birthCountry, birthState, birthCity which will be useful to investigate this question.
 
 Schools and CollegePlaying are interesting candidates for this investigation.
@@ -25,7 +27,9 @@ schoolCity, schoolState, schoolID are all values to explore.
 
 CollegePlaying.csv gives the data, while Schools.csv gives the lookup to what the values in schoolID mean.
 
-Salaries, AwardsPlayers, AllStarFull and/or HallofFame could be used to give an indication to the quality of the player.
+These will give a variety of values about where the player came from.
+
+Salaries, AwardsPlayers, AllStarFull and/or HallofFame can be used to give an indication to the quality of the player.
 
 ===============
 Data processing
