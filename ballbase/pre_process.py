@@ -71,3 +71,36 @@ def p_allstar(folder):
     print(df_times_allstar.head())
 
     return df_times_allstar
+
+
+def p_awards(folder):
+    """Function to process through the Awards Players
+    csv file.
+
+    The objective is to create a new table counting how many
+    times a player has recieved an award.
+
+    Takes folder as a positional argument specifying
+    the folder where the baseballdatabank folder is stored.
+
+    Returns a dataframe fitting the conditions above.
+    """
+
+    # Get file location
+    directory = folder
+    file_loc = os.path.join(directory, "baseballdatabank-2017.1", "core", "AwardsPlayers.csv")
+
+    # Use pandas to convert the csv to a dataframe.
+    df_awards = pd.read_csv(file_loc)
+
+    # Get the number of times a player has recieved
+    # an award.
+    #
+    # Count the number of occurences of a value within a column.
+    df_times_awards = df_awards['playerID'].value_counts()
+
+    print('')
+    print('Processed Player Awards data')
+    print(df_times_awards.head())
+
+    return df_times_awards
