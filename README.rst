@@ -31,6 +31,20 @@ These will give a variety of values about where the player came from.
 
 Salaries, AwardsPlayers, AllStarFull and/or HallofFame can be used to give an indication to the quality of the player.
 
+=============
+Data Analysis
+=============
+
+.. plot::
+
+   import matplotlib.pyplot as plt
+   import numpy as np
+   x = np.random.randn(1000)
+   plt.hist( x, 20)
+   plt.grid()
+   plt.title(r'Normal: $\mu=%.2f, \sigma=%.2f$'%(x.mean(), x.std()))
+   plt.show()
+
 ===============
 Data processing
 ===============
