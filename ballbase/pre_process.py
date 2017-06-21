@@ -36,17 +36,46 @@ def gpby_tranpose_stats(df, group, column):
     group_column = df.sort_values(group).groupby(group)[column].apply(lambda df: df.reset_index(drop=True)).unstack()
 
     # Calculate statistics for all values in a row
-    group_mean = group_column.mean(axis = 'columns')
+    group_mean = group_column.mean(axis='columns')
     group_mean.name = ('mean_'+ str(column))
-    group_max = group_column.max(axis = 'columns')
+    group_max = group_column.max(axis='columns')
     group_max.name = ('max_' + str(column))
-    group_min = group_column.min(axis = 'columns')
+    group_min = group_column.min(axis='columns')
     group_min.name = ('min_' + str(column))
 
     # Combine into a dataframe for output
     df_group = pd.concat([group_mean, group_max, group_min], axis=1)
 
     return df_group
+
+
+def gpby_tranpose_college(df, group, column):
+    """Groupby a column (group), then tranpose
+    a set of values (column) on a dataframe (df).
+
+    This will create a series of columns for all
+    the values of (column).
+
+    Following this calulcate which column value
+    occurs the most often.
+
+    If tied select the first occurence.
+
+    Combine results into a dataframe and return.
+    """
+
+    # Groupby and transpose a column of values according to column used to groupby
+    group_columns = df.sort_values(group).groupby(group)[column].apply(lambda df: df.reset_index(drop=True)).unstack()
+
+    # Calculate the most common value
+    group_mode = group_columns.mode(axis='columns')
+
+    # Select only the first column, chooses alphabetically
+    # given a tie
+    mode_college = group_mode[0]
+    mode_college.name = ('mode_'+ str(column))
+
+    return mode_college
 
 
 def p_hallfame(folder):
@@ -207,3 +236,88 @@ def p_salaries(folder):
     print(df_player_salary_stats.head())
 
     return df_player_salary_stats
+
+
+def p_college_loc(folder):
+    """Function to process both
+    College Playing csv file and Schools
+    csv file.
+
+    Objective is to create a single output
+    stating which college a player attended and
+    where that college is located.
+
+    Some players will have attended more than
+    one educational institute. To solve this issue
+    the institute with the most years will be taken.
+    Given a tie, the college selected alphabetically
+    (e.g. a before b, d before j).
+
+    The output will be a series of columns for a single
+    institute for each player.
+
+    Takes folder as a positional argument specifying
+    the folder where the baseballdatabank folder is stored.
+
+    Returns a dataframe fitting the conditions above.
+    """
+
+    # Get files
+    directory = folder
+    file_loc = os.path.join(directory, "baseballdatabank-2017.1", "core", "CollegePlaying.csv")
+    df_college = pd.read_csv(file_loc)
+
+    file_loc = os.path.join(directory, "baseballdatabank-2017.1", "core", "Schools.csv")
+    df_schools = pd.read_csv(file_loc)
+    df_schools = df_schools.set_index(['schoolID'])
+
+    # Get the mode value for college for each player
+    mode_college = gpby_tranpose_college(df_college, 'playerID', 'schoolID')
+
+
+    def get_value(row, column_name, dataframe=df_schools):
+        """Short function to be used in
+        .apply in pandas
+        """
+
+        if row in df_schools.index:
+            value = dataframe.loc[row, column_name]
+
+        else:
+            value = 'NAN'
+
+        return value
+
+
+    name_full = mode_college.apply(get_value, column_name='name_full')
+    name_full.name = 'name_full'
+    city = mode_college.apply(get_value, column_name='city')
+    city.name = 'city'
+    state = mode_college.apply(get_value, column_name='state')
+    state.name = 'state'
+    country = mode_college.apply(get_value, column_name='country')
+    country.name = 'country'
+
+    college_location = pd.concat([mode_college, name_full, city, state, country], axis=1)
+
+    print("")
+    print(college_location.head())
+    print('Processed college locations')
+
+    return college_location
+
+
+def p_master(folder):
+    """Get master.csv file and
+    process it into a dataframe.
+    """
+
+    # Get files
+    directory = folder
+    file_loc = os.path.join(directory, "baseballdatabank-2017.1", "core", "Master.csv")
+    df_master = pd.read_csv(file_loc)
+
+    print("")
+    print('Processed master file')
+
+    return df_master

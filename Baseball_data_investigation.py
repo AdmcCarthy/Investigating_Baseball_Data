@@ -1,12 +1,13 @@
 #!/usr/bin/python
 
 import os
+import pandas as pd
 from ballbase import (
     getdata,
     pre_process
     )
 
-def process_data():
+def main():
     """Process the dataset for analysis
     """
 
@@ -29,7 +30,31 @@ def process_data():
 
     # Process Salaries file to calculate a number of attributes
     # based on this information.
-    pre_process.p_salaries(directory)
+    df_salary = pre_process.p_salaries(directory)
+
+    # Process CollegePlaying file to select a single college
+    # for each player (based on most attended).
+    #
+    # Add college location information for each player
+    # from Schools.csv
+    df_college_location = pre_process.p_college_loc(directory)
+
+    # Process Master.csv file
+    df_master = pre_process.p_master(directory)
+
+    table_list = [
+        df_hallfame,
+        df_allstar,
+        df_awards,
+        df_salary,
+        df_college_location,
+        df_master
+        ]
+
+    # Merge all tables together with master.csv
+    master_merge = pd.concat(table_list, axis=1)
+
+    return master_merge
 
 if __name__ == '__main__':
-    process_data()
+    main()
