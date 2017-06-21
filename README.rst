@@ -147,10 +147,13 @@ Resources used
 --------------
 
 PandasAPI_.
+
 .. _PandasAPI: https://pandas.pydata.org/pandas-docs/stable/api.html
 
 StackOverFlow for number of times a value occurs in a column query - Link_
+
 .. _Link: https://stackoverflow.com/questions/22391433/count-the-frequency-that-a-value-occurs-in-a-dataframe-column
  
 StackOverflow how to transpose a dataset using groupby query - Link_
+
 .. _Link: https://stackoverflow.com/questions/38369424/groupby-transpose-and-append-in-pandas
