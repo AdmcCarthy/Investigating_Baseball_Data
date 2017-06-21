@@ -301,6 +301,23 @@ def p_college_loc(folder):
     college_location = pd.concat([mode_college, name_full, city, state, country], axis=1)
 
     print("")
-    print(college_location)
+    print(college_location.head())
+    print('Processed college locations')
 
     return college_location
+
+
+def p_master(folder):
+    """Get master.csv file and
+    process it into a dataframe.
+    """
+
+    # Get files
+    directory = folder
+    file_loc = os.path.join(directory, "baseballdatabank-2017.1", "core", "Master.csv")
+    df_master = pd.read_csv(file_loc)
+
+    print("")
+    print('Processed master file')
+
+    return df_master

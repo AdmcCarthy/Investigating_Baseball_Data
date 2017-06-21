@@ -29,14 +29,19 @@ def main():
 
     # Process Salaries file to calculate a number of attributes
     # based on this information.
-    # pre_process.p_salaries(directory)
+    # slaray_df = pre_process.p_salaries(directory)
 
     # Process CollegePlaying file to select a single college
     # for each player (based on most attended).
     #
     # Add college location information for each player
     # from Schools.csv
-    pre_process.p_college_loc(directory)
+    df_college_location = pre_process.p_college_loc(directory)
+
+    df_master = pre_process.p_master(directory)
+
+    # Merge all tables together with master.csv
+    master_merge = pd.concat
 
 if __name__ == '__main__':
     main()
