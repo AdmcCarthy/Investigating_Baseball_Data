@@ -61,6 +61,10 @@ This will create a bias in the selection criteria but is good enough for the mom
 
 Each players selected school's city, state and country will be appended to the player from Schools.csv
 
+Some errors occur when trying to match schoolID from CollegePlaying.csv to Schools.csv. At least one occurence
+was found where it could not find a value from CollegePlaying.csv in Schools.csv. When this occured the current
+solution is to replace the value with 'NAN'.
+
 -----------------
 Quality of player
 -----------------
