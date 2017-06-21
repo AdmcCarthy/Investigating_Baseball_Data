@@ -69,11 +69,11 @@ def gpby_tranpose_college(df, group, column):
 
     # Calculate the most common value
     group_mode = group_columns.mode(axis='columns')
-    group_mode.name = ('mode_'+ str(column))
 
     # Select only the first column, chooses alphabetically
     # given a tie
     mode_college = group_mode[0]
+    mode_college.name = ('mode_'+ str(column))
 
     return mode_college
 
@@ -237,6 +237,7 @@ def p_salaries(folder):
 
     return df_player_salary_stats
 
+
 def p_college_loc(folder):
     """Function to process both
     College Playing csv file and Schools
@@ -267,12 +268,44 @@ def p_college_loc(folder):
     df_college = pd.read_csv(file_loc)
 
     file_loc = os.path.join(directory, "baseballdatabank-2017.1", "core", "Schools.csv")
-    df_schools_dict = pd.read_csv(file_loc)
+    df_schools = pd.read_csv(file_loc)
 
     # Get the mode value for college for each player
     mode_college = gpby_tranpose_college(df_college, 'playerID', 'schoolID')
 
+
+    def get_school(value):
+        """for each schoolID value add columns
+        for name_full, city, state and country
+        from Schools.
+
+        To be used in pandas.apply with axis=1,
+        so it will be applied on each row.
+
+        Take the row value as input
+        and needs the schools_csv to find the
+        corresponding location values
+
+        Returns a dataframe
+
+        Will only work within p_college_loc
+        function as it needs df_schools to work.
+        """
+
+        locations = df_schools.loc[df_schools['schoolID'] == value]
+        pd.DataFrame(locations)
+
+        locaton_df.append(locations)
+
+        return location_df
+
+
+    # Append location information for each school per player.
+    location_df = pd.DataFrame()
+    location_df = mode_college.apply(get_school, axis=1)
+
     print("")
     print(mode_college)
+    print(locations_df)
 
     return mode_college
