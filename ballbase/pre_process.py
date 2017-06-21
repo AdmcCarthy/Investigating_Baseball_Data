@@ -269,43 +269,37 @@ def p_college_loc(folder):
 
     file_loc = os.path.join(directory, "baseballdatabank-2017.1", "core", "Schools.csv")
     df_schools = pd.read_csv(file_loc)
+    df_schools = df_schools.set_index(['schoolID'])
 
     # Get the mode value for college for each player
     mode_college = gpby_tranpose_college(df_college, 'playerID', 'schoolID')
 
-
-    def get_school(value):
-        """for each schoolID value add columns
-        for name_full, city, state and country
-        from Schools.
-
-        To be used in pandas.apply with axis=1,
-        so it will be applied on each row.
-
-        Take the row value as input
-        and needs the schools_csv to find the
-        corresponding location values
-
-        Returns a dataframe
-
-        Will only work within p_college_loc
-        function as it needs df_schools to work.
+    def get_value(row, column_name, dataframe=df_schools):
+        """Short function to be used in
+        .apply in pandas
         """
 
-        locations = df_schools.loc[df_schools['schoolID'] == value]
-        pd.DataFrame(locations)
+        if row in df_schools.index:
+            value = df_schools.loc[row, column_name]
 
-        locaton_df.append(locations)
+        else:
+            value = 'NAN'
 
-        return location_df
+        return value
 
 
-    # Append location information for each school per player.
-    location_df = pd.DataFrame()
-    location_df = mode_college.apply(get_school, axis=1)
+    name_full = mode_college.apply(get_value, column_name='name_full')
+    name_full.name = 'name_full'
+    city = mode_college.apply(get_value, column_name='city')
+    city.name = 'city'
+    state = mode_college.apply(get_value, column_name='state')
+    state.name = 'state'
+    country = mode_college.apply(get_value, column_name='country')
+    country.name = 'country'
+
+    college_location = pd.concat([mode_college, name_full, city, state, country], axis=1)
 
     print("")
-    print(mode_college)
-    print(locations_df)
+    print(college_location)
 
-    return mode_college
+    return college_location

@@ -17,19 +17,19 @@ def main():
     getdata.download_file(skip_this=True)
 
     # Process hall of fame file to get all inducted members.
-    df_hallfame = pre_process.p_hallfame(directory)
+    # df_hallfame = pre_process.p_hallfame(directory)
 
     # Process AllstarFull file to find the number of times a
     # player has been in an all stars game.
-    df_allstar = pre_process.p_allstar(directory)
+    # df_allstar = pre_process.p_allstar(directory)
 
     # Process AwardsPlayers file to find the number of times
     # a player has recieved an award.
-    df_awards = pre_process.p_awards(directory)
+    # df_awards = pre_process.p_awards(directory)
 
     # Process Salaries file to calculate a number of attributes
     # based on this information.
-    pre_process.p_salaries(directory)
+    # pre_process.p_salaries(directory)
 
     # Process CollegePlaying file to select a single college
     # for each player (based on most attended).
