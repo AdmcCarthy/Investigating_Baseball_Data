@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+from __future__ import print_function
 import os
 import pandas as pd
 from ballbase import (
@@ -53,6 +54,8 @@ def main():
 
     # Merge all tables together with master.csv
     master_merge = pd.concat(table_list, axis=1)
+
+    print('master_merge is ready')
 
     return master_merge
 

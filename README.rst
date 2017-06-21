@@ -31,6 +31,20 @@ These will give a variety of values about where the player came from.
 
 Salaries, AwardsPlayers, AllStarFull and/or HallofFame can be used to give an indication to the quality of the player.
 
+=============
+Data Analysis
+=============
+
+.. plot::
+
+   import matplotlib.pyplot as plt
+   import numpy as np
+   x = np.random.randn(1000)
+   plt.hist( x, 20)
+   plt.grid()
+   plt.title(r'Normal: $\mu=%.2f, \sigma=%.2f$'%(x.mean(), x.std()))
+   plt.show()
+
 ===============
 Data processing
 ===============
@@ -141,11 +155,11 @@ Pre-process data to wrangle it into a usable format for a specific problem.
 Resources used
 --------------
 
-Pandas API
-https://pandas.pydata.org/pandas-docs/stable/api.html
+PandasAPI_.
+.. _PandasAPI: https://pandas.pydata.org/pandas-docs/stable/api.html
 
-StackOverflow for number of times a value occurs in a column
-https://stackoverflow.com/questions/22391433/count-the-frequency-that-a-value-occurs-in-a-dataframe-column
-
-StackOverflow how to transpose a dataset using groupby
-https://stackoverflow.com/questions/38369424/groupby-transpose-and-append-in-pandas
+StackOverFlow for number of times a value occurs in a column query - Link_
+.. _Link: https://stackoverflow.com/questions/22391433/count-the-frequency-that-a-value-occurs-in-a-dataframe-column
+ 
+StackOverflow how to transpose a dataset using groupby query - Link_
+.. _Link: https://stackoverflow.com/questions/38369424/groupby-transpose-and-append-in-pandas
