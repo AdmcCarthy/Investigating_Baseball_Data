@@ -31,9 +31,9 @@ These will give a variety of values about where the player came from.
 
 Salaries, AwardsPlayers, AllStarFull and/or HallofFame can be used to give an indication to the quality of the player.
 
-=============
+-------------
 Data Analysis
-=============
+-------------
 
 .. plot::
 
@@ -45,9 +45,9 @@ Data Analysis
    plt.title(r'Normal: $\mu=%.2f, \sigma=%.2f$'%(x.mean(), x.std()))
    plt.show()
 
-===============
+---------------
 Data processing
-===============
+---------------
 
 Files are all csv files of high quality. playerID acts as a common key across different csv files.
 
