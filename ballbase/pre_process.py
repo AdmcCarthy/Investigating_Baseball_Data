@@ -274,13 +274,14 @@ def p_college_loc(folder):
     # Get the mode value for college for each player
     mode_college = gpby_tranpose_college(df_college, 'playerID', 'schoolID')
 
+
     def get_value(row, column_name, dataframe=df_schools):
         """Short function to be used in
         .apply in pandas
         """
 
         if row in df_schools.index:
-            value = df_schools.loc[row, column_name]
+            value = dataframe.loc[row, column_name]
 
         else:
             value = 'NAN'
