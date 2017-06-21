@@ -31,5 +31,12 @@ def main():
     # based on this information.
     pre_process.p_salaries(directory)
 
+    # Process CollegePlaying file to select a single college
+    # for each player (based on most attended).
+    #
+    # Add college location information for each player
+    # from Schools.csv
+    pre_process.p_college_loc(directory)
+
 if __name__ == '__main__':
     main()

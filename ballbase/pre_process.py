@@ -49,6 +49,35 @@ def gpby_tranpose_stats(df, group, column):
     return df_group
 
 
+def gpby_tranpose_college(df, group, column):
+    """Groupby a column (group), then tranpose
+    a set of values (column) on a dataframe (df).
+
+    This will create a series of columns for all
+    the values of (column).
+
+    Following this calulcate which column value
+    occurs the most often.
+
+    If tied select the first occurence.
+
+    Combine results into a dataframe and return.
+    """
+
+    # Groupby and transpose a column of values according to column used to groupby
+    group_columns = df.sort_values(group).groupby(group)[column].apply(lambda df: df.reset_index(drop=True)).unstack()
+
+    # Calculate the most common value
+    group_mode = group_columns.mode(axis='columns')
+    group_mode.name = ('mode_'+ str(column))
+
+    # Select only the first column, chooses alphabetically
+    # given a tie
+    mode_college = group_mode[0]
+
+    return mode_college
+
+
 def p_hallfame(folder):
     """Function to process through the hall of fame
     csv file.
@@ -220,7 +249,8 @@ def p_college_loc(folder):
     Some players will have attended more than
     one educational institute. To solve this issue
     the institute with the most years will be taken.
-    Given a tie, then the earliers will be choosen.
+    Given a tie, the college selected alphabetically
+    (e.g. a before b, d before j).
 
     The output will be a series of columns for a single
     institute for each player.
@@ -239,6 +269,10 @@ def p_college_loc(folder):
     file_loc = os.path.join(directory, "baseballdatabank-2017.1", "core", "Schools.csv")
     df_schools_dict = pd.read_csv(file_loc)
 
+    # Get the mode value for college for each player
+    mode_college = gpby_tranpose_college(df_college, 'playerID', 'schoolID')
 
+    print("")
+    print(mode_college)
 
-
+    return mode_college
