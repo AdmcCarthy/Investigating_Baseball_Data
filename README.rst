@@ -39,21 +39,40 @@ Data Analysis
 Data Cleaning
 -------------
 
-^^^^^^^^^^
+----------
 Data Audit
-^^^^^^^^^^
+----------
 
 Quality Metrics:
 
+^^^^^^^^
 Validity
+^^^^^^^^
 
+Cross field contraint check
+
+^^^^^^^^
 Accuracy
+^^^^^^^^
 
+Compare to gold data standard
+
+^^^^^^^^^^^^
 Completeness
+^^^^^^^^^^^^
 
+Need reference data to compare to.
+
+We don't know, what we don't know. No reference data check completed
+so if there are any missing entries we will not be aware of this problem.
+
+^^^^^^^^^^^
 Consistency
+^^^^^^^^^^^
 
+^^^^^^^^^^
 Uniformity
+^^^^^^^^^^
 
 ^^^^^^^^^^^^^^^^^^
 Data Cleaning Plan
