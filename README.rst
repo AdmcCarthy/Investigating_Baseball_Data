@@ -35,6 +35,35 @@ Salaries, AwardsPlayers, AllStarFull and/or HallofFame can be used to give an in
 Data Analysis
 -------------
 
+-------------
+Data Cleaning
+-------------
+
+^^^^^^^^^^
+Data Audit
+^^^^^^^^^^
+
+Quality Metrics:
+
+Validity
+
+Accuracy
+
+Completeness
+
+Consistency
+
+Uniformity
+
+^^^^^^^^^^^^^^^^^^
+Data Cleaning Plan
+^^^^^^^^^^^^^^^^^^
+
+Identify causes
+
+Define Operations
+
+Test, Iterate & Review
 
 ---------------
 Data processing
