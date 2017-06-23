@@ -12,11 +12,11 @@ def main():
     """Process the dataset for analysis
     """
 
-    # Specify folder location
-    directory = os.path.dirname(os.path.abspath(__file__))
+    os.chdir("..") # Store downloaded data outside of repo
+    getdata.download_file(skip_this=False) # Choose to download
 
-    # Choose to download the data
-    getdata.download_file(skip_this=True)
+    # Specify data folder location
+    directory = os.path.dirname(os.path.abspath(os.path.join(__file__, "..")))
 
     # Process hall of fame file to get all inducted members.
     df_hallfame = pre_process.p_hallfame(directory)

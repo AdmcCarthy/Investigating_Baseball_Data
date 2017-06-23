@@ -35,6 +35,57 @@ Salaries, AwardsPlayers, AllStarFull and/or HallofFame can be used to give an in
 Data Analysis
 -------------
 
+-------------
+Data Cleaning
+-------------
+
+----------
+Data Audit
+----------
+
+Quality Metrics:
+
+^^^^^^^^
+Validity
+^^^^^^^^
+
+Cross field contraint check
+
+^^^^^^^^
+Accuracy
+^^^^^^^^
+
+Compare to gold data standard
+
+^^^^^^^^^^^^
+Completeness
+^^^^^^^^^^^^
+
+Need reference data to compare to.
+
+We don't know, what we don't know. No reference data check completed
+so if there are any missing entries we will not be aware of this problem.
+
+^^^^^^^^^^^
+Consistency
+^^^^^^^^^^^
+
+Inconsistency occurs when two different entries contradict one another.
+Consider which collection method is more reliable.
+
+^^^^^^^^^^
+Uniformity
+^^^^^^^^^^
+
+^^^^^^^^^^^^^^^^^^
+Data Cleaning Plan
+^^^^^^^^^^^^^^^^^^
+
+Identify causes
+
+Define Operations
+
+Test, Iterate & Review
 
 ---------------
 Data processing
@@ -60,6 +111,10 @@ For simplicity this is choosen alphabetically. So given a tie, tulane is selecte
 This will create a bias in the selection criteria but is good enough for the moment.
 
 Each players selected school's city, state and country will be appended to the player from Schools.csv
+
+Some errors occur when trying to match schoolID from CollegePlaying.csv to Schools.csv. At least one occurence
+was found where it could not find a value from CollegePlaying.csv in Schools.csv. When this occured the current
+solution is to replace the value with 'NAN'.
 
 -----------------
 Quality of player

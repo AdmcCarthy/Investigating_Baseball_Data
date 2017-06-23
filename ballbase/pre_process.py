@@ -280,6 +280,9 @@ def p_college_loc(folder):
         .apply in pandas
         """
 
+        # Check if value is in schools.csv schools id.
+        #
+        # Return NAN if there is an error.
         if row in df_schools.index:
             value = dataframe.loc[row, column_name]
 
