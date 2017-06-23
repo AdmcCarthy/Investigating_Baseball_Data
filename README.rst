@@ -35,13 +35,9 @@ Salaries, AwardsPlayers, AllStarFull and/or HallofFame can be used to give an in
 Data Analysis
 -------------
 
--------------
-Data Cleaning
--------------
-
-----------
-Data Audit
-----------
+---------------------
+Data Audit & Cleaning
+---------------------
 
 Quality Metrics:
 
@@ -76,6 +72,8 @@ Consider which collection method is more reliable.
 ^^^^^^^^^^
 Uniformity
 ^^^^^^^^^^
+
+Check for to ensure the correct data type is used. If values are present. If the units are in the right range.
 
 ^^^^^^^^^^^^^^^^^^
 Data Cleaning Plan
