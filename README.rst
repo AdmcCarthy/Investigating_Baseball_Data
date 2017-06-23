@@ -70,6 +70,9 @@ so if there are any missing entries we will not be aware of this problem.
 Consistency
 ^^^^^^^^^^^
 
+Inconsistency occurs when two different entries contradict one another.
+Consider which collection method is more reliable.
+
 ^^^^^^^^^^
 Uniformity
 ^^^^^^^^^^
