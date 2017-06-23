@@ -21,7 +21,7 @@ def download_file(skip_this=False):
 
             # Unzip the dataset in the folder above the repo.
             with zipfile.ZipFile("../../baseballdatabank-2017.1.zip", "r") as zfile:
-                zfile.extractall(".")
+                zfile.extractall("../../")
             print("Data downloaded and unzipped")
             print("This database is copyright 1996-2017 by Sean Lahman.")
             print("Data licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.")
