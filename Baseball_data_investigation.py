@@ -5,7 +5,8 @@ import os
 import pandas as pd
 from ballbase import (
     getdata,
-    pre_process
+    pre_process,
+    auditdata
     )
 
 def main():
@@ -56,6 +57,10 @@ def main():
     master_merge = pd.concat(table_list, axis=1)
 
     print('master_merge is ready')
+
+    master_merge = auditdata.data_audit(master_merge)
+
+    print('data audit complete')
 
     return master_merge
 
