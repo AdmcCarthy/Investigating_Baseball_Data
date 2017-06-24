@@ -51,7 +51,10 @@ Cross field contraint check
 Accuracy
 ^^^^^^^^
 
-Compare to gold data standard
+Compare to gold data standard.
+
+Look for schemas to relate to common datatypes.
+https://mledoze.github.io/countries/
 
 ^^^^^^^^^^^^
 Completeness
