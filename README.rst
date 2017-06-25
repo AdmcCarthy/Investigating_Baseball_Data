@@ -35,6 +35,8 @@ Salaries, AwardsPlayers, AllStarFull and/or HallofFame can be used to give an in
 Data Analysis
 -------------
 
+Consider raw.io as a way to make some quick d3.js plots.
+
 ---------------------
 Data Audit & Cleaning
 ---------------------
