@@ -1,8 +1,31 @@
 #!/usr/bin/python
 from __future__ import print_function
-from urllib import request
+from six.moves.urllib import request
 import zipfile
 import os
+import sys
+
+last_percent_reported = None
+
+def download_progress_hook(count, blockSize, totalSize):
+    """A hook to report the progress of a download. This is mostly intended for users with
+    slow internet connections. Reports every 5% change in download progress.
+
+    Entirely taken from:
+    https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/1_notmnist.ipynb
+    """
+    global last_percent_reported
+    percent = int(count * blockSize * 100 / totalSize)
+
+    if last_percent_reported != percent:
+        if percent % 5 == 0:
+            sys.stdout.write("%s%%" % percent)
+            sys.stdout.flush()
+        else:
+            sys.stdout.write(".")
+            sys.stdout.flush()
+
+        last_percent_reported = percent
 
 
 def download_file(skip_this=False):
@@ -17,7 +40,7 @@ def download_file(skip_this=False):
             print("Starting download")
             # Get baseball data in csv form from website
             url = "http://seanlahman.com/files/database/baseballdatabank-2017.1.zip"
-            request.urlretrieve(url, filename="baseballdatabank-2017.1.zip")
+            request.urlretrieve(url, filename="baseballdatabank-2017.1.zip", reporthook=download_progress_hook)
 
             # Unzip the dataset in the folder above the repo.
             with zipfile.ZipFile("baseballdatabank-2017.1.zip", "r") as zfile:

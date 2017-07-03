@@ -215,3 +215,7 @@ StackOverFlow for number of times a value occurs in a column query - Link_
 StackOverflow how to transpose a dataset using groupby query - Link_
 
 .. _Link: https://stackoverflow.com/questions/38369424/groupby-transpose-and-append-in-pandas
+
+Code block for download_progress_hook() was taken from Udacity Tensorflow Example notebook.
+
+https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/1_notmnist.ipynb
