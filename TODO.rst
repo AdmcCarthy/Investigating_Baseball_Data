@@ -2,6 +2,14 @@
 Project to do
 =============
 
+------
+Issues
+------
+
+Getting multiple playerIDs in master table. Something wrong in the way the tables have been joined?
+
+---
+
 Output should be a report, Python code and which dataset has been used
 
 -----------------------------
