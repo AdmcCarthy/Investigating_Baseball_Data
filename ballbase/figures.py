@@ -3,16 +3,17 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# Color schemes
 b_and_w = ['#D5D5D5', '#9099A2', '#6D7993', '#96858F']
 ToddTerje = ['#F24C4E', '#EAB126', '#1FB58F', '#1B7B34']
 cool_blue = ['#99D3DF','#88BBD6','#CDCDCD', '#E9E9E9']
 custom = ['#192231','#3C3C3C','#CDCDCD', '#494E6B']
 
+
 def common_set_up(fig_size):
     """Common plot set up to be
     re-used in other figures.
     """
-
     
     sns.set_style("whitegrid")
     sns.set_style("ticks", {'axes.grid': True, 'grid.color': '.99', 'ytick.color': '.4', 'xtick.color': '.4'})

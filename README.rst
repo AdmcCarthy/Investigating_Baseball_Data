@@ -233,3 +233,7 @@ StackOverflow how to transpose a dataset using groupby query - Link_
 Code block for download_progress_hook() was taken from Udacity Tensorflow Example notebook.
 
 https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/1_notmnist.ipynb
+
+Color choice for charts
+
+https://designschool.canva.com/blog/website-color-schemes/
