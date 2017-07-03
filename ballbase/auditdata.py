@@ -31,6 +31,9 @@ def check_uniformity(data_uniform):
     Report number of missing values.
     """
 
+    if data_uniform.isnull().values.any():
+        pass
+
     return data_uniform
 
 def check_consitency(data_cons):

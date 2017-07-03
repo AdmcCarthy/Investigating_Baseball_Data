@@ -13,8 +13,12 @@ def main():
     """Process the dataset for analysis
     """
 
+    # Reset path
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    os.chdir(dir_path)
+
     os.chdir("..") # Store downloaded data outside of repo
-    getdata.download_file(skip_this=False) # Choose to download
+    getdata.download_file(skip_this=True) # Choose to download
 
     # Specify data folder location
     directory = os.path.dirname(os.path.abspath(os.path.join(__file__, "..")))

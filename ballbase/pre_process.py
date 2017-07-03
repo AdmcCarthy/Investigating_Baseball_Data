@@ -139,6 +139,7 @@ def p_allstar(folder):
     #
     # Count the number of occurences of a value within a column
     df_times_allstar = df_allstar['playerID'].value_counts()
+    df_times_allstar.name = 'allstar_count'
 
     print('')
     print('Processed All Star data')
@@ -172,6 +173,7 @@ def p_awards(folder):
     #
     # Count the number of occurences of a value within a column.
     df_times_awards = df_awards['playerID'].value_counts()
+    df_times_awards.name = 'award_count'
 
     print('')
     print('Processed Player Awards data')

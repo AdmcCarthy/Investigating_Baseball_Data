@@ -80,6 +80,8 @@ Uniformity
 
 Check for to ensure the correct data type is used. If values are present. If the units are in the right range.
 
+Every column has missing entry values.
+
 ^^^^^^^^^^^^^^^^^^
 Data Cleaning Plan
 ^^^^^^^^^^^^^^^^^^
@@ -207,6 +209,18 @@ Resources used
 PandasAPI_.
 
 .. _PandasAPI: https://pandas.pydata.org/pandas-docs/stable/api.html
+
+Seaborn Tutorial
+
+https://seaborn.pydata.org/tutorial/distributions.html
+
+matplotlib api
+
+https://matplotlib.org/api/index.html
+
+reStructeredText style guide.
+
+http://docs.python-guide.org/en/latest/notes/styleguide/
 
 StackOverFlow for number of times a value occurs in a column query - Link_
 
