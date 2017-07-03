@@ -208,6 +208,10 @@ PandasAPI_.
 
 .. _PandasAPI: https://pandas.pydata.org/pandas-docs/stable/api.html
 
+Seaborn Tutorial
+
+https://seaborn.pydata.org/tutorial/distributions.html
+
 StackOverFlow for number of times a value occurs in a column query - Link_
 
 .. _Link: https://stackoverflow.com/questions/22391433/count-the-frequency-that-a-value-occurs-in-a-dataframe-column
