@@ -214,6 +214,10 @@ Seaborn Tutorial
 
 https://seaborn.pydata.org/tutorial/distributions.html
 
+matplotlib api
+
+https://matplotlib.org/api/index.html
+
 reStructeredText style guide.
 
 http://docs.python-guide.org/en/latest/notes/styleguide/
