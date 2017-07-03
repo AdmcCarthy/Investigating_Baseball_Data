@@ -4,11 +4,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 b_and_w = ['#D5D5D5', '#9099A2', '#6D7993', '#96858F']
-ToddTerje = ['#1FB58F', '#EAB126', '#F24C4E', '#1B7B34']
+ToddTerje = ['#F24C4E', '#EAB126', '#1FB58F', '#1B7B34']
 cool_blue = ['#99D3DF','#88BBD6','#CDCDCD', '#E9E9E9']
-cccd = ['#FA7C92', '#6EC4DB', '#FFF7C0', '#66AB8C']
-brandts = ['#252839', '#677077', '#f2b632', '#b5b5b7']
-earthy = ['#49412c', '#97743a', '#262216', '#b0a18e']
 custom = ['#192231','#3C3C3C','#CDCDCD', '#494E6B']
 
 def common_set_up(fig_size):
@@ -22,12 +19,15 @@ def common_set_up(fig_size):
     sns.set_context("poster", font_scale=0.8, rc={"figure.figsize": fig_size, 'font.sans-serif': 'Gill Sans MT'})
 
 
-def univariate(x, univariate_name, color_set=custom, bin_n=None, fig_size=(12, 6)):
+def univariate(x, univariate_name, color_set=custom, bin_n=None, fig_size=(12, 6), funky=False):
     """Make a univariate distribution
     of a variable.
 
     Returns an object to be plotted.
     """
+
+    if funky:
+        color_set = ToddTerje
 
     common_set_up(fig_size) # Apply basic plot style
 
