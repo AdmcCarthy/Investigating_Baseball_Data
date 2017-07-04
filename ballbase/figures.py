@@ -64,7 +64,7 @@ def boolean_bar(data, name, color_set=custom, ax_size=(2, 5), funky=False):
     common_set_up(ax_size) # Apply basic plot style
 
     ax = sns.countplot(data, saturation=1,
-                       color=color_set[2], label=name,
+                       color=color_set[2], label=name
                       )
 
     sns.despine(offset=2, trim=True, left=True, bottom=True)
@@ -84,7 +84,42 @@ def boolean_bar(data, name, color_set=custom, ax_size=(2, 5), funky=False):
                         p.get_x()+p.get_width()/2.,          # X position
                         p.get_height()-1300                  # y position
                     ),
-                    ha='center', label='Fraction'
+                    ha='center', label='Fraction',
                     color=color_set[0])
 
+    return ax
+
+
+def count_bar(data, name, color_set=custom, ax_size=(20, 6), funky=False, highlight=None):
+    """Make a univariate distribution
+    of a variable.
+
+    Returns an object to be plotted.
+    """
+
+    if funky:
+        color_set = ToddTerje
+
+    common_set_up(ax_size) # Apply basic plot style
+
+    ax = sns.countplot(data, saturation=1,
+                       color=color_set[2], label=name,
+                      )
+
+    sns.despine(offset=2, trim=True, left=True, bottom=True)
+
+    # Set title and axes
+    title_color = '#192231'
+    font_colour = '#9099A2'
+    ax.set_title('{0}'.format(name),
+                 fontsize=20, color=title_color)
+    ax.set_ylabel('Frequency',
+                   color=font_colour)
+    ax.set_xlabel('{0}'.format(name),
+                   color=font_colour)
+    
+    if highlight:
+        bars = ax.patches
+        bars[highlight].set_color(color_set[1])
+    
     return ax
