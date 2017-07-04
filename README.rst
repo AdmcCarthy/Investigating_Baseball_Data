@@ -6,10 +6,9 @@ Investigating Baseball Data
 Problem definition
 ------------------
 
-Where do baseball players come from?
+Where do the best baseball players come from?
 
-Are there relationships between where baseball players comes from?
-
+Are there relationships between where baseball players comes from and their salary, awards, or all star status?
 
 
 Approach to answer question
