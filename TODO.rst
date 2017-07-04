@@ -7,6 +7,7 @@ Issues
 ------
 
 Getting multiple playerIDs in master table. Something wrong in the way the tables have been joined?
+Rename the college locations, city, state etc to reflect college association
 
 ---
 
