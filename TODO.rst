@@ -2,18 +2,9 @@
 Project to do
 =============
 
-------
-Issues
-------
-
-Getting multiple playerIDs in master table. Something wrong in the way the tables have been joined?
-Rename the college locations, city, state etc to reflect college association
-
----
-
 Output should be a report, Python code and which dataset has been used
 
------------------------------
+
 Brainstorm suitable questions
 -----------------------------
 
@@ -23,13 +14,13 @@ Look for questions that will investigate relationships between multiple variable
 
 Aim for one dependent variable and three independent variables.
 
-----------------------
+
 Project Specifications
 ----------------------
 
-^^^^^^^^^^^^^^^^^^
+
 Code Functionality
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 CRITERIA
 MEETS SPECIFICATIONS
@@ -45,9 +36,9 @@ Does the project use good coding practices?
 
 The code makes use of functions to avoid repetitive code. The code contains good comments and variable names, making it easy to read.
 
-^^^^^^^^^^^^^^^^^^^
+
 Quality of Analysis
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 CRITERIA
 MEETS SPECIFICATIONS
@@ -55,9 +46,9 @@ Is a question clearly posed?
 
 The project clearly states one or more questions, then addresses those questions in the rest of the analysis.
 
-^^^^^^^^^^^^^^^^^^^^
+
 Data Wrangling Phase
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 CRITERIA
 MEETS SPECIFICATIONS
@@ -65,9 +56,9 @@ Is the data cleaning well documented?
 
 The project documents any changes that were made to clean the data, such as merging multiple files, handling missing values, etc.
 
-^^^^^^^^^^^^^^^^^
+
 Exploration Phase
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 CRITERIA
 MEETS SPECIFICATIONS
@@ -81,9 +72,9 @@ The project's visualizations are varied and show multiple comparisons and trends
 
 At least two kinds of plots should be created as part of the explorations.
 
-^^^^^^^^^^^^^^^^^
+
 Conclusions Phase
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 CRITERIA
 MEETS SPECIFICATIONS
@@ -91,9 +82,9 @@ Has the student correctly communicated tentativeness of findings?
 
 The results of the analysis are presented such that any limitations are clear. The analysis does not state or imply that one change causes another based solely on a correlation.
 
-^^^^^^^^^^^^^
+
 Communication
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 CRITERIA
 MEETS SPECIFICATIONS
