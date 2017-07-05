@@ -44,7 +44,7 @@ def formatting_text_box(ax, parameters, formatting_right):
     return ax
 
 
-def annotation_text(ax, string, vert_pos, horz_pos, color_set=custom, strong_colour=True):
+def annotation_text(ax, string, vert_pos, horz_pos, color_set=custom, strong_colour=True, font_size=12):
     """ Returns the ax(axes within figures) with an
     added text box displaying an annotation
     """
@@ -52,12 +52,12 @@ def annotation_text(ax, string, vert_pos, horz_pos, color_set=custom, strong_col
     if strong_colour:
         font_c = color_set[0]
     else:
-        font_c = '#9099A2'
+        font_c = '#9099A2'  # Light pale grey
 
     # Text box set up
     props = dict(boxstyle='round', facecolor='white', alpha=0.5, edgecolor='white')
 
-    ax.text(horz_pos, vert_pos, string, transform=ax.transAxes, fontsize=12,
+    ax.text(horz_pos, vert_pos, string, transform=ax.transAxes, fontsize=font_size,
     verticalalignment='top', color=font_c, bbox=props)
 
     return ax
