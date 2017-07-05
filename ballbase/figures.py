@@ -81,7 +81,7 @@ def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size
         bin_n = int(x_max)-int(x_min)
 
     ax = sns.distplot(x, bins=bin_n, rug=rug,
-                      hist_kws={"histtype": "bar", "linewidth": 1, 'edgecolor': 'white', "alpha": 1, "color": color_set[2], 'label': 'Histogram'},
+                      hist_kws={"histtype": "bar", "linewidth": 1, 'align': 'left', 'log': False, 'edgecolor': 'white', "alpha": 1, "color": color_set[2], 'label': 'Histogram'},
                       kde_kws={"color": color_set[0], "lw": 3, "label": "KDE"},
                       rug_kws={"color": color_set[1], 'lw': 0.3, "alpha": 0.5, 'label': 'rug plot', 'height': 0.05})
 
@@ -97,7 +97,7 @@ def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size
     else:
         rugstr = ''
         
-    ax.set_title(('Univariate distribution of {0}'.format(univariate_name) + rugstr),
+    ax.set_title(('Distribution of {0}'.format(univariate_name) + rugstr),
                   fontsize=20, color=title_color)
     ax.set_ylabel('Frequency of {0}'.format(univariate_name),
                    color=font_colour)
