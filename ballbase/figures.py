@@ -44,6 +44,25 @@ def formatting_text_box(ax, parameters, formatting_right):
     return ax
 
 
+def annotation_text(ax, string, vert_pos, horz_pos, color_set=custom, strong_colour=True):
+    """ Returns the ax(axes within figures) with an
+    added text box displaying an annotation
+    """
+
+    if strong_colour:
+        font_c = color_set[0]
+    else:
+        font_c = '#9099A2'
+
+    # Text box set up
+    props = dict(boxstyle='round', facecolor='white', alpha=0.5, edgecolor='white')
+
+    ax.text(horz_pos, vert_pos, string, transform=ax.transAxes, fontsize=12,
+    verticalalignment='top', color=font_c, bbox=props)
+
+    return ax
+
+
 def univariate(x, univariate_name, color_set=custom, bin_n=None, ax_size=(12, 6), funky=False, rug=True, formatting_right=True, x_truncation_upper=None, x_truncation_lower=None):
     """Make a univariate distribution
     of a variable.
@@ -60,7 +79,7 @@ def univariate(x, univariate_name, color_set=custom, bin_n=None, ax_size=(12, 6)
     x_max = x.max()
 
     if bin_n is None:
-        bin_n = x_max
+        bin_n = int(x_max)-1
 
     ax = sns.distplot(x, bins=bin_n, rug=rug,
                       hist_kws={"histtype": "bar", "linewidth": 1, 'edgecolor': 'white', "alpha": 1, "color": color_set[2], 'label': 'Histogram'},
@@ -98,6 +117,7 @@ def univariate(x, univariate_name, color_set=custom, bin_n=None, ax_size=(12, 6)
         x_truncation_lower_str = ''
     
     # String within text box
+    
     parameters = ('Formatting:\n'
                 + x_truncation_lower_str
                 + x_truncation_upper_str
