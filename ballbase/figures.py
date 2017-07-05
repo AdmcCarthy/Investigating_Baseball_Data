@@ -75,11 +75,10 @@ def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size
     
     common_set_up(ax_size) # Apply basic plot style
 
-    # Used to adjust parameters based on total number of values
-    x_max = x.max()
-
     if bin_n == 'all_values':
-        bin_n = int(x_max)-1
+        x_max = x.max()
+        x_min = x.min()
+        bin_n = int(x_max)-int(x_min)
 
     ax = sns.distplot(x, bins=bin_n, rug=rug,
                       hist_kws={"histtype": "bar", "linewidth": 1, 'edgecolor': 'white', "alpha": 1, "color": color_set[2], 'label': 'Histogram'},
