@@ -20,7 +20,7 @@ def common_set_up(ax_size):
     sns.set_context("poster", font_scale=0.8, rc={"figure.figsize": ax_size, 'font.sans-serif': 'Gill Sans MT'})
 
 
-def univariate(x, univariate_name, color_set=custom, bin_n=None, ax_size=(12, 6), funky=False):
+def univariate(x, univariate_name, color_set=custom, bin_n=None, ax_size=(12, 6), funky=False, rug=True):
     """Make a univariate distribution
     of a variable.
 
@@ -29,11 +29,17 @@ def univariate(x, univariate_name, color_set=custom, bin_n=None, ax_size=(12, 6)
 
     if funky:
         color_set = ToddTerje
-
+    
     common_set_up(ax_size) # Apply basic plot style
 
-    ax = sns.distplot(x, bins=bin_n, rug=True,
-                      hist_kws={"histtype": "bar", "linewidth": 1, "alpha": 1, "color": color_set[2], 'label': 'Histogram'},
+    # Used to adjust parameters based on total number of values
+    vector_x_size = len(x)
+
+    if bin_n is None:
+        bin_n = vector_x_size
+
+    ax = sns.distplot(x, bins=bin_n, rug=rug,
+                      hist_kws={"histtype": "bar", "linewidth": 1, 'edgecolor': 'white', "alpha": 1, "color": color_set[2], 'label': 'Histogram'},
                       kde_kws={"color": color_set[0], "lw": 3, "label": "KDE"},
                       rug_kws={"color": color_set[1], 'lw': 0.3, "alpha": 0.5, 'label': 'rug plot', 'height': 0.05})
 
@@ -41,12 +47,27 @@ def univariate(x, univariate_name, color_set=custom, bin_n=None, ax_size=(12, 6)
 
     title_color = '#192231'
     font_colour = '#9099A2'
-    ax.set_title('Univariate distribution of {0}, with rug plot'.format(univariate_name),
+    if rug:
+        rugstr = ', with rug plot'
+    else:
+        rugstr = ''
+        
+    ax.set_title(('Univariate distribution of {0}'.format(univariate_name) + rugstr),
                   fontsize=20, color=title_color)
     ax.set_ylabel('Frequency of {0}'.format(univariate_name),
                    color=font_colour)
     ax.set_xlabel('{0}'.format(univariate_name),
                    color=font_colour)
+
+    parameters
+
+    # Text box
+    # these are matplotlib.patch.Patch properties
+    props = dict(boxstyle='round', facecolor='white', alpha=0.5)
+
+    # place a text box in upper left in axes coords
+    ax.text(0.05, 0.95, parameters, transform=ax.transAxes, fontsize=14,
+        verticalalignment='top', bbox=props)
 
     return ax
 
