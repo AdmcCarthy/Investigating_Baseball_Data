@@ -78,7 +78,7 @@ def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size
     # Used to adjust parameters based on total number of values
     x_max = x.max()
 
-    if bin_n == 'all_values'
+    if bin_n == 'all_values':
         bin_n = int(x_max)-1
 
     ax = sns.distplot(x, bins=bin_n, rug=rug,
