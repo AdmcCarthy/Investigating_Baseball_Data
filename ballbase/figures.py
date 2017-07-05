@@ -28,7 +28,7 @@ def formatting_text_box(ax, parameters, formatting_right):
     font_colour = '#9099A2'
 
     # Text box set up
-    props = dict(boxstyle='round', facecolor='white', alpha=0.5, edgecolor='white')
+    text_box_patch = dict(boxstyle='round', facecolor='white', alpha=0.5, edgecolor='white')
 
     # Text box position
     if formatting_right:
@@ -39,7 +39,7 @@ def formatting_text_box(ax, parameters, formatting_right):
         box_horizontal = 0.05
 
     ax.text(box_horizontal, box_vertical, parameters, transform=ax.transAxes, fontsize=12,
-            verticalalignment='top', color=font_colour, bbox=props)
+            verticalalignment='top', color=font_colour, bbox=text_box_patch)
     
     return ax
 
@@ -55,10 +55,10 @@ def annotation_text(ax, string, vert_pos, horz_pos, color_set=custom, strong_col
         font_c = '#9099A2'  # Light pale grey
 
     # Text box set up
-    props = dict(boxstyle='round', facecolor='white', alpha=0.5, edgecolor='white')
+    text_box_patch = dict(boxstyle='round', facecolor='white', alpha=0.5, edgecolor='white')
 
     ax.text(horz_pos, vert_pos, string, transform=ax.transAxes, fontsize=font_size,
-    verticalalignment='top', color=font_c, bbox=props)
+    verticalalignment='top', color=font_c, bbox=text_box_patch)
 
     return ax
 
