@@ -63,7 +63,7 @@ def annotation_text(ax, string, vert_pos, horz_pos, color_set=custom, strong_col
     return ax
 
 
-def univariate(x, univariate_name, color_set=custom, bin_n=None, ax_size=(12, 6), funky=False, rug=True, formatting_right=True, x_truncation_upper=None, x_truncation_lower=None):
+def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size=(12, 6), funky=False, rug=True, formatting_right=True, x_truncation_upper=None, x_truncation_lower=None):
     """Make a univariate distribution
     of a variable.
 
@@ -78,7 +78,7 @@ def univariate(x, univariate_name, color_set=custom, bin_n=None, ax_size=(12, 6)
     # Used to adjust parameters based on total number of values
     x_max = x.max()
 
-    if bin_n is None:
+    if bin_n == 'all_values'
         bin_n = int(x_max)-1
 
     ax = sns.distplot(x, bins=bin_n, rug=rug,
