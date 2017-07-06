@@ -251,6 +251,7 @@ def dist_transform_plot(x, univariate_name, fig_size=(18, 16), color_set=custom,
     common_set_up(fig_size)
 
     fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(fig_size), facecolor='white')
+    fig.suptitle("Distribution of {0}".format(univariate_name), fontsize=16)
     fig.subplots_adjust(hspace=0.18, top=0.95)
 
     univariate_overdispersed(x, univariate_name, transform=None, color_set=color_set, bin_n=bin_n, ax_size=ax_size, funky=funky, rug=rug, formatting_right=formatting_right, x_truncation_upper=x_truncation_upper, x_truncation_lower=x_truncation_lower, ax=ax1)
