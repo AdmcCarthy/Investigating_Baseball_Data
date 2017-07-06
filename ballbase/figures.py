@@ -17,7 +17,7 @@ def common_set_up(ax_size):
     """Common plot set up to be
     re-used in other figures.
     """
-    
+
     sns.set_style("whitegrid")
     sns.set_style("ticks", {'axes.grid': True, 'grid.color': '.99', 'ytick.color': '.4', 'xtick.color': '.4'})
     sns.set_context("poster", font_scale=0.8, rc={"figure.figsize": ax_size, 'font.sans-serif': 'Gill Sans MT'})
@@ -66,7 +66,7 @@ def annotation_text(ax, string, vert_pos, horz_pos, color_set=custom, strong_col
     return ax
 
 
-def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size=(12, 6), funky=False, rug=True, formatting_right=True, x_truncation_upper=None, x_truncation_lower=None):
+def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size=(12, 6), funky=False, rug=True, formatting_right=True, x_truncation_upper=None, x_truncation_lower=None, ax=None):
     """Make a univariate distribution
     of a variable.
 
@@ -83,13 +83,10 @@ def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size
         x_min = x.min()
         bin_n = int(x_max)-int(x_min)
 
-    ax = sns.distplot(x, bins=bin_n, rug=rug,
+    ax = sns.distplot(x, bins=bin_n, rug=rug, ax=ax,
                       hist_kws={"histtype": "bar", "linewidth": 1, 'align': 'mid', 'log': False, 'edgecolor': 'white', "alpha": 1, "color": color_set[2], 'label': 'Histogram'},
                       kde_kws={"color": color_set[0], "lw": 3, "label": "KDE"},
                       rug_kws={"color": color_set[1], 'lw': 0.3, "alpha": 0.5, 'label': 'rug plot', 'height': 0.05})
-
-    # Seaborn despine to remove boundaries around plot
-    sns.despine(offset=2, trim=True, left=True, bottom=True)
 
     title_color = '#192231'
     font_colour = '#9099A2'
@@ -99,12 +96,17 @@ def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size
         rugstr = ', with rug plot'
     else:
         rugstr = ''
-        
-    ax.set_title(('Distribution of {0}'.format(univariate_name) + rugstr),
-                  fontsize=20, color=title_color)
-    ax.set_ylabel('Frequency of {0}'.format(univariate_name),
-                   color=font_colour)
+
+    # Do not add a title in a multi-figure plot.
+    #
+    # Title will be added to figure with all sub-plots
+    # instead in this case
+    if ax is None: 
+        ax.set_title(('Distribution of {0}'.format(univariate_name) + rugstr),
+                    fontsize=20, color=title_color)
     ax.set_xlabel('{0}'.format(univariate_name),
+                color=font_colour)
+    ax.set_ylabel('Frequency of {0}'.format(univariate_name),
                    color=font_colour)
 
     # Limit the x axis by truncating
@@ -129,6 +131,11 @@ def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size
                 + x_truncation_lower_str
                 + x_truncation_upper_str
                 + 'bins = {0}'.format(bin_n_str))
+    
+    # Will not work on multiple subplots within a figure
+    if ax is None:
+        # Seaborn despine to remove boundaries around plot
+        sns.despine(offset=2, trim=True, left=True, bottom=True)
 
     ax = formatting_text_box(ax, parameters, formatting_right)
 
@@ -209,7 +216,7 @@ def count_bar(data, name, color_set=custom, ax_size=(20, 6), funky=False, highli
     return ax
 
 
-def univariate_overdispersed(x, univariate_name, transform='log_10', color_set=custom, bin_n='all_values', ax_size=(12, 6), funky=False, rug=False, formatting_right=True, x_truncation_upper=None, x_truncation_lower=None):
+def univariate_overdispersed(x, univariate_name, transform='log_10', color_set=custom, bin_n='all_values', ax_size=(12, 6), funky=False, rug=False, formatting_right=True, x_truncation_upper=None, x_truncation_lower=None,  ax=None):
     """Retrun plot using data transformation to correct
     for overdispersed data.
     """
@@ -218,16 +225,16 @@ def univariate_overdispersed(x, univariate_name, transform='log_10', color_set=c
         x_max = x.max()
         x_min = x.min()
         bin_n = int(x_max)-int(x_min)
-    
+
      # The function applied to pandas objects are
      # from .transformation
-    if transform == 'log_10'
+    if transform == 'log_10':
         x = x.apply(log_10)
         univariate_name = univariate_name + ' log10'
     elif transform == 'sqrt':
         x = x.apply(sq_rt)
         univariate_name = univariate_name + ' square root'
 
-    ax = univariate(x, univariate_name, color_set=custom, bin_n=bin_n, ax_size=ax_size, funky=funky, rug=rug, formatting_right=formatting_right, x_truncation_upper=x_truncation_upper, x_truncation_lower=x_truncation_lower)
+    ax = univariate(x, univariate_name, color_set=custom, bin_n=bin_n, ax_size=ax_size, funky=funky, rug=rug, formatting_right=formatting_right, x_truncation_upper=x_truncation_upper, x_truncation_lower=x_truncation_lower, ax=ax)
 
     return ax
