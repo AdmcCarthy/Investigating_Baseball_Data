@@ -106,7 +106,7 @@ def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size
                     fontsize=20, color=title_color)
     ax.set_xlabel('{0}'.format(univariate_name),
                 color=font_colour)
-    ax.set_ylabel('Frequency of {0}'.format(univariate_name),
+    ax.set_ylabel('Frequency'.format(univariate_name),
                    color=font_colour)
 
     # Limit the x axis by truncating
@@ -226,8 +226,8 @@ def univariate_overdispersed(x, univariate_name, transform='log_10', color_set=c
         x_min = x.min()
         bin_n = int(x_max)-int(x_min)
 
-     # The function applied to pandas objects are
-     # from .transformation
+    # The function applied to pandas objects are
+    # from .transformation
     if transform == 'log_10':
         x = x.apply(log_10)
         univariate_name = univariate_name + ' log10'
@@ -238,3 +238,24 @@ def univariate_overdispersed(x, univariate_name, transform='log_10', color_set=c
     ax = univariate(x, univariate_name, color_set=custom, bin_n=bin_n, ax_size=ax_size, funky=funky, rug=rug, formatting_right=formatting_right, x_truncation_upper=x_truncation_upper, x_truncation_lower=x_truncation_lower, ax=ax)
 
     return ax
+
+
+def dist_transform_plot(x, univariate_name, fig_size=(18, 16), color_set=custom, bin_n='all_values', ax_size=(12, 6), funky=False, rug=True, formatting_right=True, x_truncation_upper=None, x_truncation_lower=None, ax=None):
+    """Returns a plot including
+    three individual plots alligned
+    as three rows based on two data
+    transforms.
+    """
+
+    fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(fig_size), facecolor='white')
+    fig.subplots_adjust(hspace=0.18, top=0.95)
+
+    common_set_up(fig_size)
+
+    univariate_overdispersed(x, univariate_name, transform=None, color_set=color_set, bin_n=bin_n, ax_size=ax_size, funky=funky, rug=rug, formatting_right=formatting_right, x_truncation_upper=x_truncation_upper, x_truncation_lower=x_truncation_lower, ax=ax1)
+    univariate_overdispersed(x, univariate_name, transform='log_10', color_set=color_set, bin_n=bin_n, ax_size=ax_size, funky=funky, rug=rug, formatting_right=formatting_right, x_truncation_upper=x_truncation_upper, x_truncation_lower=x_truncation_lower, ax=ax2)
+    univariate_overdispersed(x, univariate_name, transform='sqrt', color_set=color_set, bin_n=bin_n, ax_size=ax_size, funky=funky, rug=rug, formatting_right=formatting_right, x_truncation_upper=x_truncation_upper, x_truncation_lower=x_truncation_lower, ax=ax3)
+
+    sns.despine(offset=2, trim=True, left=True, bottom=True)
+
+    return fig
