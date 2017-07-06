@@ -181,7 +181,7 @@ def boolean_bar(data, name, color_set=custom, ax_size=(2, 5), funky=False):
     return ax
 
 
-def count_bar(data, name, color_set=custom, ax_size=(20, 6), funky=False, highlight=None):
+def count_bar(data, name, color_set=custom, ax_size=(20, 6), funky=False, highlight=None, ax=None):
     """Make a univariate distribution
     of a variable.
 
@@ -193,7 +193,7 @@ def count_bar(data, name, color_set=custom, ax_size=(20, 6), funky=False, highli
 
     common_set_up(ax_size) # Apply basic plot style
 
-    ax = sns.countplot(data, saturation=1,
+    ax = sns.countplot(data, saturation=1, ax=ax,
                        color=color_set[2], label=name,
                       )
 
@@ -202,8 +202,9 @@ def count_bar(data, name, color_set=custom, ax_size=(20, 6), funky=False, highli
     # Set title and axes
     title_color = '#192231'
     font_colour = '#9099A2'
-    ax.set_title('{0}'.format(name),
-                 fontsize=20, color=title_color)
+    if ax is None:
+        ax.set_title('{0}'.format(name),
+                    fontsize=20, color=title_color)
     ax.set_ylabel('Frequency',
                    color=font_colour)
     ax.set_xlabel('{0}'.format(name),
@@ -230,7 +231,7 @@ def univariate_overdispersed(x, univariate_name, transform='log_10', color_set=c
     # from .transformation
     if transform == 'log_10':
         x = x.apply(log_10)
-        univariate_name = univariate_name + ' log10'
+        univariate_name = univariate_name + ' in logarithms (log10)'
     elif transform == 'sqrt':
         x = x.apply(sq_rt)
         univariate_name = univariate_name + ' square root'
