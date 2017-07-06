@@ -215,6 +215,10 @@ Seaborn Tutorial
 
 https://seaborn.pydata.org/tutorial/distributions.html
 
+How to change x and y limits with seaborn
+
+https://stackoverflow.com/questions/25212986/how-to-set-some-xlim-and-ylim-in-seaborn-lmplot-facetgrid
+
 matplotlib api
 
 https://matplotlib.org/api/index.html
