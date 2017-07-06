@@ -2,6 +2,9 @@
 
 import matplotlib.pyplot as plt
 import seaborn as sns
+from .transformation import (
+                            log_10, sq_rt
+                            )
 
 # Color schemes
 b_and_w = ['#D5D5D5', '#9099A2', '#6D7993', '#96858F']
@@ -115,12 +118,17 @@ def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size
         x_truncation_upper_str = ''
         x_truncation_lower_str = ''
     
+    # Used to describe the format of plot
+    if bin_n is None:
+        bin_n_str = 'automatic'
+    else:
+        bin_n_str = bin_n
+
     # String within text box
-    
     parameters = ('Formatting:\n'
                 + x_truncation_lower_str
                 + x_truncation_upper_str
-                + 'bins = {0}'.format(bin_n))
+                + 'bins = {0}'.format(bin_n_str))
 
     ax = formatting_text_box(ax, parameters, formatting_right)
 
@@ -198,4 +206,28 @@ def count_bar(data, name, color_set=custom, ax_size=(20, 6), funky=False, highli
         bars = ax.patches
         bars[highlight].set_color(color_set[1])
     
+    return ax
+
+
+def univariate_overdispersed(x, univariate_name, transform='log_10', color_set=custom, bin_n='all_values', ax_size=(12, 6), funky=False, rug=False, formatting_right=True, x_truncation_upper=None, x_truncation_lower=None):
+    """Retrun plot using data transformation to correct
+    for overdispersed data.
+    """
+
+    if bin_n == 'all_values':
+        x_max = x.max()
+        x_min = x.min()
+        bin_n = int(x_max)-int(x_min)
+    
+     # The function applied to pandas objects are
+     # from .transformation
+    if transform == 'log_10'
+        x = x.apply(log_10)
+        univariate_name = univariate_name + ' log10'
+    elif transform == 'sqrt':
+        x = x.apply(sq_rt)
+        univariate_name = univariate_name + ' square root'
+
+    ax = univariate(x, univariate_name, color_set=custom, bin_n=bin_n, ax_size=ax_size, funky=funky, rug=rug, formatting_right=formatting_right, x_truncation_upper=x_truncation_upper, x_truncation_lower=x_truncation_lower)
+
     return ax
