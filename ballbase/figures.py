@@ -55,7 +55,7 @@ def annotation_text(ax, string, vert_pos, horz_pos, color_set=custom, strong_col
         font_c = '#9099A2'  # Light pale grey
 
     # Text box set up
-    text_box_patch = dict(boxstyle='round', facecolor='white', alpha=0.5, edgecolor='white')
+    text_box_patch = dict(boxstyle='round', facecolor='white', alpha=0.2, edgecolor='white')
 
     ax.text(horz_pos, vert_pos, string, transform=ax.transAxes, fontsize=font_size,
     verticalalignment='top', color=font_c, bbox=text_box_patch)
@@ -81,7 +81,7 @@ def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size
         bin_n = int(x_max)-int(x_min)
 
     ax = sns.distplot(x, bins=bin_n, rug=rug,
-                      hist_kws={"histtype": "bar", "linewidth": 1, 'align': 'left', 'log': False, 'edgecolor': 'white', "alpha": 1, "color": color_set[2], 'label': 'Histogram'},
+                      hist_kws={"histtype": "bar", "linewidth": 1, 'align': 'mid', 'log': False, 'edgecolor': 'white', "alpha": 1, "color": color_set[2], 'label': 'Histogram'},
                       kde_kws={"color": color_set[0], "lw": 3, "label": "KDE"},
                       rug_kws={"color": color_set[1], 'lw': 0.3, "alpha": 0.5, 'label': 'rug plot', 'height': 0.05})
 
