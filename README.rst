@@ -103,6 +103,8 @@ College information is available.
 .. figure:: resources\images\Distributions_of_Birth_Year_All_data.png
    :scale: 100 %
 
+   Fig.1. Distribution of Birth Year for entire dataset
+
 The above figure shows the distribution of birth year for all data values with this number.
 The total number of values which have birth data are 18973 out of an original .....
 The minimum is 1820. The mean is 1931
@@ -112,6 +114,8 @@ After selecting only data with information about which college was attended ther
 
 .. figure:: resources\images\Distributions_of_birth_year_final_data.png
    :scale: 100 %
+
+   Fig.2. Distribution of Birth Year for data used here
 
 The mean has moved up to 1947 with the data now more skewed towards more recent times.
 
