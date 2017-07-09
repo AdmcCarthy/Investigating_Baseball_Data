@@ -2,6 +2,7 @@
 Investigating Baseball Data
 ===========================
 
+Adam McCarthy
 
 Problem definition
 ------------------
@@ -36,8 +37,8 @@ Data Analysis
 
 
 
-Data Review
------------
+Data Examination
+----------------
 
 Overall the dataset is well organised.
 
@@ -89,12 +90,35 @@ The majority of baseball players are born in the USA.
 
    Fig._. Binary plot showing ratio of players born in the USA using the total dataset
 
-This combined with the majority of college location information being sourced in the USA
+.. figure:: resources\images\College_USA.png
+   :scale: 100 %
+
+   Fig._. Binary plot showing ratio of player´s College being in the USA using investigation dataset
+
+This combined with the entire amount of college location information being sourced in the USA steers
+this investigation to primarily focus on the USA.
 
 It is beyond the scope of this investigation to do a complete
 audit of all data in this database. Outliers will be assumed to be realistic,
 nan values will not be interpolated. Queries will ignore missing values.
 
+Two key independent variables for this assesment are player´s birth state and college state.
+California is highlighted in both bar graphs below as the most common occurence. There is a
+variety across the other states, the two count bar graphs do not give any information about
+how related a birth State and college State are.
+
+.. figure:: resources\images\Birth_state_count.png
+   :scale: 100 %
+
+   Fig._. Bar graph showing the count of player´s Birth State location.
+
+.. figure:: resources\images\College_state_count.png
+   :scale: 100 %
+
+   Fig._. Bar graph showing the count of player´s mode College State location.
+
+Birth city has 2208 unique values in the investigation dataset while college cities has 721, giving too much granularity to be
+considered at this stage of the investigation.
 
 Data processing
 ---------------
