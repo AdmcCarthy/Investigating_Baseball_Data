@@ -100,16 +100,16 @@ def p_hallfame(folder):
     df_hof = pd.read_csv(file_loc)
 
     # Only interested in players
-    df_player = df_hof.loc[df_hof['category'] == 'Player']
+    df_player = df_hof.loc[df_hof['category'] == 'Player'].copy()
 
     # Only interested in those inducted into the Hall of Fame
-    df_ind = df_player.loc[df_player['inducted'] == 'Y']
+    df_ind = df_player.loc[df_player['inducted'] == 'Y'].copy()
+    df_ind.set_index("playerID", inplace=True)
 
     # How many Hall of Fame members
     (a, b) = df_ind.shape
 
     print('Processed hall of fame data')
-    print('There are {0} members of the Hall of Fame'.format(a))
 
     return df_ind
 
@@ -143,7 +143,6 @@ def p_allstar(folder):
 
     print('')
     print('Processed All Star data')
-    print(df_times_allstar.head())
 
     return df_times_allstar
 
@@ -177,7 +176,6 @@ def p_awards(folder):
 
     print('')
     print('Processed Player Awards data')
-    print(df_times_awards.head())
 
     return df_times_awards
 
@@ -235,7 +233,6 @@ def p_salaries(folder):
 
     print('')
     print('Processed Salary data')
-    print(df_player_salary_stats.head())
 
     return df_player_salary_stats
 
@@ -306,7 +303,6 @@ def p_college_loc(folder):
     college_location = pd.concat([mode_college, name_full, city, state, country], axis=1).copy()
 
     print("")
-    print(college_location.head())
     print('Processed college locations')
 
     return college_location
@@ -322,6 +318,9 @@ def p_master(folder):
     file_loc = os.path.join(directory, "baseballdatabank-2017.1", "core", "Master.csv")
     df_master = pd.read_csv(file_loc)
     df_master.set_index("playerID", inplace=True)
+
+    temp = df_master["birthYear"].dropna().copy()
+    print("Birth Year Size", temp.size)
 
     print("")
     print('Processed master file')

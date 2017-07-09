@@ -49,31 +49,24 @@ def main():
     df_master = pre_process.p_master(directory)
 
     table_list = [
+        df_master,
         df_allstar,
         df_awards,
         df_hallfame,
         df_salary,
-        df_college_location,
-        df_master
+        df_college_location
         ]
 
-    # Merge all tables together with master.csv
-    master_merge = pd.concat(table_list, axis=1, join_axes=[df_master.index])
-
-    print("hallfame", df_hallfame.size)
-    print("allstar", df_allstar.size)
-    print("awards", df_awards.size)
-    print("salary", df_salary.size)
-    print("college", df_college_location.size)
-    print("master", df_master.size)
-    print("final", master_merge.size)
+    # Merge all tables together with df_college_location
+    master_merge = pd.concat(table_list, axis=1, join='inner', join_axes=[df_college_location.index], verify_integrity=True)
 
     print('master_merge is ready')
 
     master_merge = auditdata.data_audit(master_merge)
 
     print('data audit complete')
-
+    temp2 = master_merge["birthYear"].dropna().copy()
+    print("final birth year size", temp2.size)
     return master_merge
 
 if __name__ == '__main__':
