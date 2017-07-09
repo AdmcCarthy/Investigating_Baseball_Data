@@ -2,6 +2,7 @@
 Investigating Baseball Data
 ===========================
 
+Adam McCarthy
 
 Problem definition
 ------------------
@@ -34,11 +35,10 @@ Salaries, AwardsPlayers, AllStarFull and/or HallofFame can be used to give an in
 Data Analysis
 -------------
 
-Consider raw.io as a way to make some quick d3.js plots.
 
 
-Data Review
------------
+Data Examination
+----------------
 
 Overall the dataset is well organised.
 
@@ -55,34 +55,70 @@ common weight measurements are taken every 5 pounds. The lowermost figure
 limits the x-axis to highlight this further. Some values are populate according to
 a higher granualarity. A solution to this issue would be to bin weight or similar issues.
 
+Another common theme is highly skewed datasets.
+
+.. figure:: resources\images\mean_salary_transform.png
+   :scale: 100 %
+
+   Fig._. Distribution of mean career salary
+
+The example of salary shows lognormal distributions with large dispersion
+of values towards the maximum value. The number of appearences in All Star matches, player awards
+and all forms of salary information display this style of data.
+
 Some extreme outliers occur within the data
 
-.. figure:: resources\images\Weight2_all_data.png
+.. figure:: resources\images\Weight_2_all_data.png
    :scale: 100 %
 
    Fig._. Distribution of Weight in pounds for entire dataset
 
-Using weight again, but now with a rug plot to highlight where values occur
-the minimum weight value can be viewed (see annotation). The minimum weight
+Using weight again, but now with a rug plot to highlight where values occur.
+The minimum weight value can be viewed (see annotation) as an isolated occurence. The minimum weight
 is 65 pounds which is dramatically different than the rest of the sample.
 
+
 This value can be found to be paired to a height of 43 inches, and corresponds to
-Eddie Gaedel. This extreme outlier is a real occurence!
+Eddie Gaedel. This extreme outlier in both weight and height is a real occurence!
 
 https://en.wikipedia.org/wiki/Eddie_Gaedel
 
+The majority of baseball players are born in the USA.
+
+.. figure:: resources\images\USA_birth.png
+   :scale: 100 %
+
+   Fig._. Binary plot showing ratio of players born in the USA using the total dataset
+
+.. figure:: resources\images\College_USA.png
+   :scale: 100 %
+
+   Fig._. Binary plot showing ratio of player´s College being in the USA using investigation dataset
+
+This combined with the entire amount of college location information being sourced in the USA steers
+this investigation to primarily focus on the USA.
+
 It is beyond the scope of this investigation to do a complete
-audit of all data in this database.
+audit of all data in this database. Outliers will be assumed to be realistic,
+nan values will not be interpolated. Queries will ignore missing values.
 
-Data Cleaning Plan
-~~~~~~~~~~~~~~~~~~
+Two key independent variables for this assesment are player´s birth state and college state.
+California is highlighted in both bar graphs below as the most common occurence. There is a
+variety across the other states, the two count bar graphs do not give any information about
+how related a birth State and college State are.
 
-Identify causes
+.. figure:: resources\images\Birth_state_count.png
+   :scale: 100 %
 
-Define Operations
+   Fig._. Bar graph showing the count of player´s Birth State location.
 
-Test, Iterate & Review
+.. figure:: resources\images\College_state_count.png
+   :scale: 100 %
 
+   Fig._. Bar graph showing the count of player´s mode College State location.
+
+Birth city has 2208 unique values in the investigation dataset while college cities has 721, giving too much granularity to be
+considered at this stage of the investigation.
 
 Data processing
 ---------------
