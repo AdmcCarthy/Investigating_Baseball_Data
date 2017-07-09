@@ -57,7 +57,7 @@ a higher granualarity. A solution to this issue would be to bin weight or simila
 
 Some extreme outliers occur within the data
 
-.. figure:: resources\images\Weight2_all_data.png
+.. figure:: resources\images\Weight_2_all_data.png
    :scale: 100 %
 
    Fig._. Distribution of Weight in pounds for entire dataset
