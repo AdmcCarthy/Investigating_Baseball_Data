@@ -49,16 +49,24 @@ def main():
     df_master = pre_process.p_master(directory)
 
     table_list = [
-        df_hallfame,
         df_allstar,
         df_awards,
+        df_hallfame,
         df_salary,
         df_college_location,
         df_master
         ]
 
     # Merge all tables together with master.csv
-    master_merge = pd.concat(table_list, axis=1)
+    master_merge = pd.concat(table_list, axis=1, join_axes=[df_master.index])
+
+    print("hallfame", df_hallfame.size)
+    print("allstar", df_allstar.size)
+    print("awards", df_awards.size)
+    print("salary", df_salary.size)
+    print("college", df_college_location.size)
+    print("master", df_master.size)
+    print("final", master_merge.size)
 
     print('master_merge is ready')
 

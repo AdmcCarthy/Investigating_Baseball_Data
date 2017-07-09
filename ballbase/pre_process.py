@@ -295,15 +295,15 @@ def p_college_loc(folder):
 
 
     name_full = mode_college.apply(get_value, column_name='name_full')
-    name_full.name = 'name_full'
+    name_full.name = 'college_name_full'
     city = mode_college.apply(get_value, column_name='city')
-    city.name = 'city'
+    city.name = 'college_city'
     state = mode_college.apply(get_value, column_name='state')
-    state.name = 'state'
+    state.name = 'college_state'
     country = mode_college.apply(get_value, column_name='country')
-    country.name = 'country'
+    country.name = 'college_country'
 
-    college_location = pd.concat([mode_college, name_full, city, state, country], axis=1)
+    college_location = pd.concat([mode_college, name_full, city, state, country], axis=1).copy()
 
     print("")
     print(college_location.head())
@@ -321,6 +321,7 @@ def p_master(folder):
     directory = folder
     file_loc = os.path.join(directory, "baseballdatabank-2017.1", "core", "Master.csv")
     df_master = pd.read_csv(file_loc)
+    df_master.set_index("playerID", inplace=True)
 
     print("")
     print('Processed master file')
