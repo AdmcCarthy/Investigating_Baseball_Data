@@ -83,7 +83,7 @@ def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size
         x_min = x.min()
         bin_n = int(x_max)-int(x_min)
 
-    ax = sns.distplot(x, bins=bin_n, rug=rug, ax=ax,
+    fig = sns.distplot(x, bins=bin_n, rug=rug, ax=ax,
                       hist_kws={"histtype": "bar", "linewidth": 1, 'align': 'mid', 'log': False, 'edgecolor': 'white', "alpha": 1, "color": color_set[2], 'label': 'Histogram'},
                       kde_kws={"color": color_set[0], "lw": 3, "label": "KDE"},
                       rug_kws={"color": color_set[1], 'lw': 0.3, "alpha": 0.5, 'label': 'rug plot', 'height': 0.05})
@@ -102,16 +102,16 @@ def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size
     # Title will be added to figure with all sub-plots
     # instead in this case
     if ax is None: 
-        ax.set_title(('Distribution of {0}'.format(univariate_name) + rugstr),
+        fig.set_title(('Distribution of {0}'.format(univariate_name) + rugstr),
                     fontsize=20, color=title_color)
-    ax.set_xlabel('{0}'.format(univariate_name),
+    fig.set_xlabel('{0}'.format(univariate_name),
                 color=font_colour)
-    ax.set_ylabel('Frequency'.format(univariate_name),
+    fig.set_ylabel('Frequency'.format(univariate_name),
                    color=font_colour)
 
     # Limit the x axis by truncating
     if x_truncation_upper or x_truncation_lower:
-        axes = ax.axes
+        axes = fig.axes
         axes.set_xlim(x_truncation_lower, x_truncation_upper)
         # To be communicated back in Formatting notes
         x_truncation_upper_str = 'x axis truncated by {0}\n'.format(x_truncation_upper)
@@ -137,9 +137,9 @@ def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size
         # Seaborn despine to remove boundaries around plot
         sns.despine(offset=2, trim=True, left=True, bottom=True)
 
-    ax = formatting_text_box(ax, parameters, formatting_right)
+    fig = formatting_text_box(fig, parameters, formatting_right)
 
-    return ax
+    return fig
 
 
 def boolean_bar(data, name, color_set=custom, ax_size=(2, 5), funky=False):
@@ -154,7 +154,7 @@ def boolean_bar(data, name, color_set=custom, ax_size=(2, 5), funky=False):
 
     common_set_up(ax_size) # Apply basic plot style
 
-    ax = sns.countplot(data, saturation=1,
+    fig = sns.countplot(data, saturation=1,
                        color=color_set[2], label=name
                       )
 
@@ -162,15 +162,15 @@ def boolean_bar(data, name, color_set=custom, ax_size=(2, 5), funky=False):
 
     # Set title and axes
     title_color = '#192231'
-    ax.set_title('{0}'.format(name),
+    fig.set_title('{0}'.format(name),
                  fontsize=20, color=title_color)
-    ax.set_ylabel('')
-    ax.set_xlabel('')
+    fig.set_ylabel('')
+    fig.set_xlabel('')
 
     # Percentage annotation
     total = float(len(data))
-    for p in ax.patches:
-        ax.annotate('{:.2f}'.format((p.get_height()/total)), # Value to be anootated
+    for p in fig.patches:
+        fig.annotate('{:.2f}'.format((p.get_height()/total)), # Value to be anootated
                     (
                         p.get_x()+p.get_width()/2.,          # X position
                         p.get_height()-1300                  # y position
@@ -178,7 +178,7 @@ def boolean_bar(data, name, color_set=custom, ax_size=(2, 5), funky=False):
                     ha='center', label='Fraction',
                     color=color_set[0])
 
-    return ax
+    return fig
 
 
 def count_bar(data, name, color_set=custom, ax_size=(20, 6), funky=False, highlight=None, ax=None):
@@ -193,7 +193,7 @@ def count_bar(data, name, color_set=custom, ax_size=(20, 6), funky=False, highli
 
     common_set_up(ax_size) # Apply basic plot style
 
-    ax = sns.countplot(data, saturation=1, ax=ax,
+    fig = sns.countplot(data, saturation=1, ax=ax,
                        color=color_set[2], label=name,
                       )
 
@@ -203,18 +203,18 @@ def count_bar(data, name, color_set=custom, ax_size=(20, 6), funky=False, highli
     title_color = '#192231'
     font_colour = '#9099A2'
     if ax is None:
-        ax.set_title('{0}'.format(name),
+        fig.set_title('{0}'.format(name),
                     fontsize=20, color=title_color)
-    ax.set_ylabel('Frequency',
+    fig.set_ylabel('Frequency',
                    color=font_colour)
-    ax.set_xlabel('{0}'.format(name),
+    fig.set_xlabel('{0}'.format(name),
                    color=font_colour)
     
     if highlight:
-        bars = ax.patches
+        bars = fig.patches
         bars[highlight].set_color(color_set[1])
     
-    return ax
+    return fig
 
 
 def univariate_overdispersed(x, univariate_name, transform='log_10', color_set=custom, bin_n='all_values', ax_size=(12, 6), funky=False, rug=False, formatting_right=True, x_truncation_upper=None, x_truncation_lower=None,  ax=None):
@@ -236,9 +236,9 @@ def univariate_overdispersed(x, univariate_name, transform='log_10', color_set=c
         x = x.apply(sq_rt)
         univariate_name = univariate_name + ' square root'
 
-    ax = univariate(x, univariate_name, color_set=custom, bin_n=bin_n, ax_size=ax_size, funky=funky, rug=rug, formatting_right=formatting_right, x_truncation_upper=x_truncation_upper, x_truncation_lower=x_truncation_lower, ax=ax)
+    fig = univariate(x, univariate_name, color_set=custom, bin_n=bin_n, ax_size=ax_size, funky=funky, rug=rug, formatting_right=formatting_right, x_truncation_upper=x_truncation_upper, x_truncation_lower=x_truncation_lower, ax=ax)
 
-    return ax
+    return fig
 
 
 def dist_transform_plot(x, univariate_name, fig_size=(18, 16), color_set=custom, bin_n='all_values', ax_size=(12, 6), funky=False, rug=True, formatting_right=True, x_truncation_upper=None, x_truncation_lower=None, ax=None):
@@ -250,9 +250,9 @@ def dist_transform_plot(x, univariate_name, fig_size=(18, 16), color_set=custom,
 
     common_set_up(fig_size)
 
-    fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(fig_size), facecolor='white')
-    fig.suptitle("Distribution of {0}".format(univariate_name), fontsize=16)
-    fig.subplots_adjust(hspace=0.18, top=0.95)
+    fig_plot, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(fig_size), facecolor='white')
+    fig_plot.suptitle("Distribution of {0}".format(univariate_name), fontsize=16)
+    fig_plot.subplots_adjust(hspace=0.18, top=0.95)
 
     univariate_overdispersed(x, univariate_name, transform=None, color_set=color_set, bin_n=bin_n, ax_size=ax_size, funky=funky, rug=rug, formatting_right=formatting_right, x_truncation_upper=x_truncation_upper, x_truncation_lower=x_truncation_lower, ax=ax1)
     univariate_overdispersed(x, univariate_name, transform='sqrt', color_set=color_set, bin_n=bin_n, ax_size=ax_size, funky=funky, rug=rug, formatting_right=formatting_right, x_truncation_upper=x_truncation_upper, x_truncation_lower=x_truncation_lower, ax=ax2)
@@ -260,4 +260,4 @@ def dist_transform_plot(x, univariate_name, fig_size=(18, 16), color_set=custom,
 
     sns.despine(offset=2, trim=True, left=True, bottom=True)
 
-    return fig
+    return fig_plot
