@@ -142,7 +142,7 @@ def univariate(x, univariate_name, color_set=custom, bin_n='all_values', ax_size
     return fig
 
 
-def boolean_bar(data, name, color_set=custom, ax_size=(2, 5), funky=False):
+def boolean_bar(data, name, color_set=custom, ax_size=(2, 5), funky=False, annotate=True):
     """Make a univariate distribution
     of a variable.
 
@@ -168,15 +168,16 @@ def boolean_bar(data, name, color_set=custom, ax_size=(2, 5), funky=False):
     fig.set_xlabel('')
 
     # Percentage annotation
-    total = float(len(data))
-    for p in fig.patches:
-        fig.annotate('{:.2f}'.format((p.get_height()/total)), # Value to be anootated
-                    (
-                        p.get_x()+p.get_width()/2.,          # X position
-                        p.get_height()-1300                  # y position
-                    ),
-                    ha='center', label='Fraction',
-                    color=color_set[0])
+    if annotate:
+        total = float(len(data))
+        for p in fig.patches:
+            fig.annotate('{:.2f}'.format((p.get_height()/total)), # Value to be anootated
+                        (
+                            p.get_x()+p.get_width()/2.,          # X position
+                            p.get_height()-1300                  # y position
+                        ),
+                        ha='center', label='Fraction',
+                        color=color_set[0])
 
     return fig
 
