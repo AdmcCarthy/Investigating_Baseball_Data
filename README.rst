@@ -37,50 +37,42 @@ Data Analysis
 Consider raw.io as a way to make some quick d3.js plots.
 
 
-Data Audit & Cleaning
----------------------
+Data Review
+-----------
 
-Quality Metrics:
+Overall the dataset is well organised.
 
+Some datasets display issues regarding population.
 
-Validity
-~~~~~~~~
+.. figure:: resources\images\Weight_all_data.png
+   :scale: 100 %
 
-Cross field contraint check
+   Fig._. Distribution of Weight in pounds for entire dataset
 
+Weight highlights this well. The three figures above are of the same dataset,
+by reducing the bin numbers to the number of unique values it can be seen that
+common weight measurements are taken every 5 pounds. The lowermost figure
+limits the x-axis to highlight this further. Some values are populate according to
+a higher granualarity. A solution to this issue would be to bin weight or similar issues.
 
-Accuracy
-~~~~~~~~
+Some extreme outliers occur within the data
 
-Compare to gold data standard.
+.. figure:: resources\images\Weight2_all_data.png
+   :scale: 100 %
 
-Look for schemas to relate to common datatypes.
-https://mledoze.github.io/countries/
+   Fig._. Distribution of Weight in pounds for entire dataset
 
+Using weight again, but now with a rug plot to highlight where values occur
+the minimum weight value can be viewed (see annotation). The minimum weight
+is 65 pounds which is dramatically different than the rest of the sample.
 
-Completeness
-~~~~~~~~~~~~
+This value can be found to be paired to a height of 43 inches, and corresponds to
+Eddie Gaedel. This extreme outlier is a real occurence!
 
-Need reference data to compare to.
+https://en.wikipedia.org/wiki/Eddie_Gaedel
 
-We don't know, what we don't know. No reference data check completed
-so if there are any missing entries we will not be aware of this problem.
-
-
-Consistency
-~~~~~~~~~~~
-
-Inconsistency occurs when two different entries contradict one another.
-Consider which collection method is more reliable.
-
-
-Uniformity
-~~~~~~~~~~
-
-Check for to ensure the correct data type is used. If values are present. If the units are in the right range.
-
-Every column has missing entry values.
-
+It is beyond the scope of this investigation to do a complete
+audit of all data in this database.
 
 Data Cleaning Plan
 ~~~~~~~~~~~~~~~~~~
