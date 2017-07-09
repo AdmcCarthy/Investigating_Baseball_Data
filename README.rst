@@ -100,7 +100,7 @@ Files are all csv files of high quality. playerID acts as a common key across di
 Each file will be concatenated into the index of College Location, therefore reducing the dataset only to areas where
 College information is available.
 
-.. figure:: resources\images\Distributions_of_Birth_Year_All_data.png
+.. figure:: resources\images\Distribution_of_Birth_Year_All_data.png
    :scale: 100 %
 
    Fig.1. Distribution of Birth Year for entire dataset
@@ -112,7 +112,7 @@ The minimum is 1820. The mean is 1931
 After selecting only data with information about which college was attended there are now only
 6575 values and a difference in the distribution.
 
-.. figure:: resources\images\Distributions_of_birth_year_final_data.png
+.. figure:: resources\images\Distribution_of_birth_year_final_data.png
    :scale: 100 %
 
    Fig.2. Distribution of Birth Year for data used here
