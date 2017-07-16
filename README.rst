@@ -25,6 +25,19 @@ Information is also reported on the full data processing workflow:
 
 * Data processing workflow
 
+Getting Started
+---------------
+
+To recreate the study use the `Data Examination notebook <>`_ and
+the `Exporatory Data Analysis notebook <>`_.
+
+These both use the Baseball_data_investigation.py script to
+pre-process and concatenate the dataset into a single file for
+analysis.
+
+This includes using Pandas and Numpy to create new attributes
+from the data.
+
 Data Examination
 ----------------
 
