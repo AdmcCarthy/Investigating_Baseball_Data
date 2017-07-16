@@ -3,7 +3,6 @@
 from __future__ import print_function
 import os
 import pandas as pd
-import numpy as np
 
 
 def standarize_column(column):
@@ -192,7 +191,8 @@ def p_hallfame(folder):
     # to concatenate on.
     df_ind.set_index("playerID", inplace=True)
 
-    print('Processed hall of fame data')
+    print('')
+    print('Processed Hall of Fame data')
 
     return df_ind
 
@@ -457,7 +457,7 @@ def p_college_loc(folder):
                                  ).copy()
 
     print("")
-    print('Processed college locations')
+    print('Processed College Locations')
 
     return college_location
 

@@ -84,10 +84,12 @@ def main():
                              join_axes=[df_college_location.index],
                              verify_integrity=True
                              )
-    print('master_merge is ready')
+    print('')
+    print('Master_Merge is ready')
 
     master_merge = auditdata.data_audit(master_merge)
-    print('data audit complete')
+    print('')
+    print('Data Audit complete')
 
     return master_merge
 
