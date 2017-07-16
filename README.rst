@@ -9,7 +9,9 @@ Problem definition
 
 Where do the best baseball players come from?
 
-Are there relationships between where a baseball player is from or where they studies and their salary, the number of awards recieved, or all star status?
+Will a baseball player birth location or college location relate to salary, or awards?
+
+This is a brief exploration of large database on baseball players.
 
 This report covers:
 
@@ -19,7 +21,7 @@ This report covers:
 
 * Conclusions
 
-Information is also reported on the full data processing workflow:
+Detailed information is also presented on the full data processing workflow:
 
 * Approach to data processing
 
@@ -32,18 +34,25 @@ To recreate the study use the `Data Examination notebook <>`_ and
 the `Exporatory Data Analysis notebook <>`_.
 
 These both use the Baseball_data_investigation.py script to
-pre-process and concatenate the dataset into a single file for
-analysis.
+pre-process and concatenate six seperate csv files frome the
+database into a single file for analysis.
 
 This includes using Pandas and Numpy to create new attributes
-from the data.
+from the data to aid in the analysis.
+
+For example counting how many times each player has been in an all star
+match.
+
+.. code-block:: python
+
+    df_times_allstar = df_allstar['playerID'].value_counts()
 
 Data Examination
 ----------------
 
-Overall the dataset is well organised.
+Overall the dataset is well organised and good to use.
 
-Some datasets display issues regarding population.
+Some datasets display issues regarding how the values are populated
 
 .. figure:: resources\images\Weight_all_data.png
    :scale: 100 %
@@ -64,8 +73,7 @@ Another common theme is highly skewed datasets.
    Fig._. Distribution of mean career salary
 
 The example of salary shows lognormal distributions with large dispersion
-of values towards the maximum value. The number of appearences in All Star matches, player awards
-and all forms of salary information display this style of data.
+of values towards the maximum value. The number of appearences in All Star matches, player awards and all forms of salary information display this style of data.
 
 Some extreme outliers occur within the data
 
@@ -75,9 +83,7 @@ Some extreme outliers occur within the data
    Fig._. Distribution of Weight in pounds for entire dataset
 
 Using weight again, but now with a rug plot to highlight where values occur.
-The minimum weight value can be viewed (see annotation) as an isolated occurence. The minimum weight
-is 65 pounds which is dramatically different than the rest of the sample.
-
+The minimum weight value can be viewed (see annotation) as an isolated occurence. The minimum weight is 65 pounds which is dramatically different than the rest of the sample.
 
 This value can be found to be paired to a height of 43 inches, and corresponds to
 Eddie Gaedel. This extreme outlier in both weight and height is a real occurence!
@@ -96,14 +102,17 @@ The majority of baseball players are born in the USA.
 
    Fig._. Binary plot showing ratio of player´s College being in the USA using investigation dataset
 
-This combined with the entire amount of college location information being sourced in the USA steers
-this investigation to primarily focus on the USA.
+This combined with the entire amount of college location information being sourced in the USA steers this investigation to primarily focus on the USA.
 
 It is beyond the scope of this investigation to do a complete
 audit of all data in this database. Outliers will be assumed to be realistic,
 nan values will not be interpolated. Queries will ignore missing values.
 
-Two key independent variables for this assesment are player´s birth state and college state.
+The reason for this is to look for trends in players that contain the corresponding data
+rather than interpolating any salary or other information for this analysis.
+
+Two key independent variables for this assesment are player´s birth state and college state. Both of these are categorical.
+
 California is highlighted in both bar graphs below as the most common occurence. There is a
 variety across the other states, the two count bar graphs do not give any information about
 how related a birth State and college State are.
@@ -118,8 +127,7 @@ how related a birth State and college State are.
 
    Fig._. Bar graph showing the count of player´s mode College State location.
 
-Birth city has 2208 unique values in the investigation dataset while college cities has 721, giving too much granularity to be
-considered at this stage of the investigation.
+Birth city has 2208 unique values in the investigation dataset while college cities has 721, giving too much granularity to be considered of use at this stage of the investigation. State is a more usable aggregated category for analysis. 
 
 Data Analysis
 -------------
@@ -139,9 +147,7 @@ Attributes will be needed to describe the location each player is from.
 
 MASTER.csv also contains, birthCountry, birthState, birthCity which will be useful to investigate this question.
 
-Schools and CollegePlaying are interesting candidates for this investigation.
-
-schoolCity, schoolState, schoolID are all values to explore.
+Schools and CollegePlaying are interesting candidates for positional information containing schoolCity, schoolState, schoolID are all values to explore.
 
 CollegePlaying.csv gives the data, while Schools.csv gives the lookup to what the values in schoolID mean.
 
@@ -162,8 +168,9 @@ College information is available.
 
    Fig.1. Distribution of Birth Year for entire dataset
 
-The above figure shows the distribution of birth year for all data values with this number.
-The total number of values which have birth data are 18973 out of an original .....
+The above figure shows the distribution of birth year for all data values with this attribute recorded.
+
+The total number of values which have birth data are 18973.
 The minimum is 1820. The mean is 1931
 
 After selecting only data with information about which college was attended there are now only
