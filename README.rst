@@ -11,13 +11,25 @@ Where do the best baseball players come from?
 
 Are there relationships between where baseball players comes from and their salary, awards, or all star status?
 
+Getting started
+---------------
+
+Run,
+
+.. code-block:: bash
+
+    $ Baseball_data_investigation.py
+
+To downdload the dataset, and process it into one table.
+
+
 
 Approach to answer question
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------
 
 Take the MASTER.csv table and use this as a central source for unique playerID, this will relate to many other tables.
 
-Attributes will be needed to describe the location each player is from. 
+Attributes will be needed to describe the location each player is from, these will form independent variables.
 
 MASTER.csv also contains, birthCountry, birthState, birthCity which will be useful to investigate this question.
 
@@ -27,15 +39,22 @@ schoolCity, schoolState, schoolID are all values to explore.
 
 CollegePlaying.csv gives the data, while Schools.csv gives the lookup to what the values in schoolID mean.
 
-These will give a variety of values about where the player came from.
+These will give a variety of values about where the player came from. However it boils down to two
+independent variables, college location and birth location. These variables have different scales
+i.e. country, state, city. The right granualarity will need to be choosen.
+
+To use more independent variables height and weight can also be investigated.
 
 Salaries, AwardsPlayers, AllStarFull and/or HallofFame can be used to give an indication to the quality of the player.
+Any of these can be used as a dependent variable or a dependent variable could be create out of a combination
+of these variables.
 
+The data-set has been processed using numpy and pandas to clean, create new variables and
+merge tables together. See further into the report for a section on data processing.
 
-Data Analysis
--------------
-
-
+An examination of the data will be described followed by data analysis and conclusions.
+The data analysis is not exhaustive so observations to do not lead to robust conclusions in
+this report. Any inference is tentative and would require further work to become robust.
 
 Data Examination
 ----------------
@@ -119,6 +138,16 @@ how related a birth State and college State are.
 
 Birth city has 2208 unique values in the investigation dataset while college cities has 721, giving too much granularity to be
 considered at this stage of the investigation.
+
+Data Analysis
+-------------
+
+
+
+Conclusions
+-----------
+
+
 
 Data processing
 ---------------
@@ -233,28 +262,6 @@ Other
 There are a number of limitations to these approaches related to how each of these have changed through time.
 
 Performance statistics like Batting or Fielding could be used but will be left out for this analysis.
-
-
-Modules
--------
-
-
-getdata
-~~~~~~~
-
-Contains a method to download the Sean Lahman Baseball database
-directly from the website.
-
-.. code-block:: python
-
-    getdata.download_file()
-
-
-pre_process
-~~~~~~~~~~~
-
-Pre-process data to wrangle it into a usable format for a specific problem.
-
 
 Resources used
 ~~~~~~~~~~~~~~
