@@ -20,7 +20,8 @@ Run,
 
     $ Baseball_data_investigation.py
 
-To downdload the dataset, and process it into one table.
+To downdload the dataset, 
+and process it into one table tailored for this  projects question.
 
 Or see the notebooks to view and run
 the data examination and prelimary data analysis.
@@ -52,6 +53,7 @@ of these variables.
 
 The data-set has been processed using numpy and pandas to clean, create new variables and
 merge tables together. See further into the report for a section on data processing.
+See the pre-processing module for the code used.
 
 An examination of the data will be described followed by data analysis and conclusions.
 The data analysis is not exhaustive so observations to do not lead to robust conclusions in
