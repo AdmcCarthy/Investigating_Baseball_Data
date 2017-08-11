@@ -2,7 +2,7 @@
 Investigating Baseball Data
 ===========================
 
-Adam McCarthy
+*Adam McCarthy*
 
 Problem definition
 ------------------
@@ -22,7 +22,8 @@ Run,
 
 To downdload the dataset, and process it into one table.
 
-
+Or see the notebooks to view and run
+the data examination and prelimary data analysis.
 
 Approach to answer question
 ---------------------------
