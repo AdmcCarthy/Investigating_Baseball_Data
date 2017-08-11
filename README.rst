@@ -202,14 +202,12 @@ Some errors occur when trying to match schoolID from CollegePlaying.csv to Schoo
 was found where it could not find a value from CollegePlaying.csv in Schools.csv. When this occured the current
 solution is to replace the value with 'NAN'.
 
-
 Quality of player - Dependent variables
 ---------------------------------------
 
 To see if there are any relationships between relatively better or worse players some form of attribute will be needed to qualify quality.
 
 These will form a variety of variables that could be dependent on other variables.
-
 
 Salaries
 ~~~~~~~~
@@ -299,6 +297,4 @@ Code block for download_progress_hook() was taken from Udacity Tensorflow Exampl
 
 https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/1_notmnist.ipynb
 
-Color choice for charts
-
-https://designschool.canva.com/blog/website-color-schemes/
+Color choice for charts https://designschool.canva.com/blog/website-color-schemes/
