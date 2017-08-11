@@ -265,25 +265,15 @@ Performance statistics like Batting or Fielding could be used but will be left o
 Resources used
 ~~~~~~~~~~~~~~
 
-PandasAPI_.
+Pandas `API <https://pandas.pydata.org/pandas-docs/stable/api.html>`_
 
-.. _PandasAPI: https://pandas.pydata.org/pandas-docs/stable/api.html
+Seaborn `Tutorial <https://seaborn.pydata.org/tutorial/distributions.html>`_
 
-Seaborn Tutorial
+How to change `x and y limits with seaborn <https://stackoverflow.com/questions/25212986/how-to-set-some-xlim-and-ylim-in-seaborn-lmplot-facetgrid>`_
 
-https://seaborn.pydata.org/tutorial/distributions.html
+matplotlib `api <https://matplotlib.org/api/index.html>`_
 
-How to change x and y limits with seaborn
-
-https://stackoverflow.com/questions/25212986/how-to-set-some-xlim-and-ylim-in-seaborn-lmplot-facetgrid
-
-matplotlib api
-
-https://matplotlib.org/api/index.html
-
-reStructeredText style guide.
-
-http://docs.python-guide.org/en/latest/notes/styleguide/
+reStructeredText `style guide. <http://docs.python-guide.org/en/latest/notes/styleguide/>`_
 
 StackOverFlow for number of times a value occurs in a column query - Link_
 
@@ -293,8 +283,6 @@ StackOverflow how to transpose a dataset using groupby query - Link_
 
 .. _Link: https://stackoverflow.com/questions/38369424/groupby-transpose-and-append-in-pandas
 
-Code block for download_progress_hook() was taken from Udacity Tensorflow Example notebook.
+Code block for download_progress_hook() was taken from `Udacity Tensorflow Example notebook. <https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/1_notmnist.ipynb>`_
 
-https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/1_notmnist.ipynb
-
-Color choice for charts https://designschool.canva.com/blog/website-color-schemes/
+`Color choice for charts <https://designschool.canva.com/blog/website-color-schemes/>`_
