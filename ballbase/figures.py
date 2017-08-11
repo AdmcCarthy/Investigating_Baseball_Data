@@ -640,3 +640,65 @@ def dist_transform_plot(x, univariate_name, fig_size=(18, 16), color_set=custom,
     sns.despine(offset=2, trim=True, left=True, bottom=True)
 
     return fig_plot
+
+
+def frequency_polygon(x, name, categorical_v=None, color_set=custom, proportion=False, ax_size=(10, 5), formatting_right=True, x_truncation_upper=None, x_truncation_lower=None, ax=None):
+    """
+    Returns a frequency polygon
+    plot which can be used with catergorical
+    data to show difference between categories.
+    """
+
+    common_set_up(ax_size)
+
+    x_max = x.max()
+    x_min = x.min()
+    bin_n = int(x_max)-int(x_min)
+
+    # Get height and a position form a histogram
+    # to be turned into point for frequency polygon
+    y, bin_bounds = np.histogram(x, bins=bin_n)
+    bin_edge = bin_bounds[:-1]
+
+    if proportion:
+        x_size = len(x)
+        y = y/x_size
+        y_str = "Proportion"
+    else:
+        y_str = "Frequency"
+
+    fig = sns.pointplot(bin_edge, y, color='#192231', scale=0.3, marker='.')
+
+    title_color = '#192231'
+    font_colour = '#9099A2'
+
+    # Do not add a title in a multi-figure plot.
+    #
+    # Title will be added to figure with all sub-plots
+    # instead in this case
+    if ax is None: 
+        fig.set_title(('Frequency polygon of {0}'.format(name)),
+                       fontsize=20, color=title_color)
+    fig.set_xlabel('{0}'.format(name),
+                   color=font_colour)
+    fig.set_ylabel(y_str.format(name),
+                   color=font_colour)
+
+    # Limit the x axis by truncating
+    if x_truncation_upper or x_truncation_lower:
+        axes = fig.axes
+        fig.set_xlim(x_truncation_lower, x_truncation_upper)
+        # To be communicated back in Formatting notes
+        x_truncation_upper_str = 'x axis truncated by {0}\n'.format(x_truncation_upper)
+        x_truncation_lower_str = 'x axis truncated after {0}\n'.format(x_truncation_lower)
+
+        parameters = ('Formatting:\n'
+                      + x_truncation_lower_str
+                      + x_truncation_upper_str)
+
+        fig = formatting_text_box(fig, parameters, formatting_right)
+
+    # Will not work on multiple subplots within a figure
+    if ax is None:
+        # Seaborn despine to remove boundaries around plot
+        sns.despine(offset=2, trim=True, left=True, bottom=True)
