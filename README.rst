@@ -21,10 +21,10 @@ Run,
     $ Baseball_data_investigation.py
 
 To downdload the dataset, 
-and process it into one table tailored for this  projects question.
+and process it into one table tailored for this projects question.
 
 Or see the notebooks to view and run
-the data examination and prelimary data analysis.
+the `data examination <>`_ and prelimary `data analysis <>`_.
 
 Approach to answer question
 ---------------------------
@@ -145,7 +145,89 @@ considered at this stage of the investigation.
 Data Analysis
 -------------
 
+The following section is a brief, preliminary data analysis. This is not
+a thorough exploratory data analysis or a more sophisticated data analysis
+to test any hypothesese in the data.
 
+The question is related to the effect of geographic location
+on the quality of base ball players.
+
+To begin an different independent variable can be compared to the
+dependent variables to see if there are no relationships. Height
+and weight would not be expected to have a strong correlation
+to dependent variables.
+
+Height vs. weight, two independent shows a strong correlation.
+
+.. image:: resources\images\height_index.png
+   :scale: 100 %
+
+When comparing one of these independent variables
+to a dependent variable like the mean career salary
+there is little correlation. The distribution reflects
+the normal distribution of the weight variable.
+
+.. image:: resources\images\weight_salary.png
+   :scale: 100 %
+
+This is one example where there is not a strong relationship,
+the Pearson correlation coefficient is only 0.18.
+
+Before investigating the geography of a player the
+dependent variables can be compared to each other.
+There are a few options here from salary, allstar counts and
+award counts that can be compared to the independent variables.
+
+The mean career salary and max ever career salary
+are compared in the next plot. These show a strong
+correlation. Note all these plots ommit players
+who do not have both of the variables recorded.
+
+.. image:: resources\images\mean_max.png
+   :scale: 100 %
+
+The mean annually standardized career salary compared
+to the max standardized career salary shows a similar
+relationship with a slight curve upwards towards
+max salary.
+
+.. image:: resources\images\mean_max_std.png
+   :scale: 100 %
+
+Comparing award count to allstar
+count there is a correlation that scores
+0.7 on the pearson correlation coefficient.
+
+.. image:: resources\images\award_allstar.png
+   :scale: 100 %
+
+The independent variables of a players birth
+state and college state are used to describe
+their geographic origins. State is choosen
+as city is too granular.
+
+The two bar charts show the mean of all players mean
+career salary in a state. It also includes a 95%
+confidence interval.
+
+.. image:: resources\images\Bar_max_salary_birth.png
+   :scale: 100 %
+
+.. image:: resources\images\Bar_max_salary_college.png
+   :scale: 100 %
+
+The next two images use box plots to describe the
+distribution of max salary standardized annually
+by birth state and college state. The limitation
+of this plot is that there are different
+numbers within each state making the distribution
+of values challenging to interpret.
+
+.. image:: resources\images\box_birth.png
+   :scale: 100 %
+
+.. image:: resources\images\box_college.png
+   :scale: 100 %
 
 Conclusions
 -----------
