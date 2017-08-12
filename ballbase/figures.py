@@ -148,18 +148,9 @@ def annotation_text(ax, string, vert_pos, horz_pos,
     return ax
 
 
-def univariate(
-               x,
-               univariate_name,
-               color_set=custom_bw,
-               bin_n='all_values',
-               ax_size=(12, 6),
-               rug=True,
-               formatting_right=True,
-               x_truncation_upper=None,
-               x_truncation_lower=None,
-               ax=None
-               ):
+def univariate(x, univariate_name, color_set=custom_bw, bin_n='all_values',
+               ax_size=(12, 6), rug=True, formatting_right=True,
+               x_truncation_upper=None, x_truncation_lower=None, ax=None):
     """
     Create a histogram and kernel density estimate
     plot to show the univariate distribution
@@ -204,6 +195,11 @@ def univariate(
     x_truncation_lower : None/int/float
         Number to set lower limit of the x-axis.
         None means automatically set.
+    ax : matplotlib axes
+        axes of the figure in which the figure
+        will be created, to be used with figures
+        with more than one subplot.
+        None means it will plot by itself.
 
     Returns
     -------
@@ -319,13 +315,8 @@ def univariate(
     return fig
 
 
-def boolean_bar(
-                data,
-                name,
-                color_set=custom_bw,
-                ax_size=(2, 5),
-                annotate=True
-                ):
+def boolean_bar(data, name, color_set=custom_bw,
+                ax_size=(2, 5), annotate=True):
     """
     A plotted bar chart for a True/False question.
 
@@ -565,13 +556,46 @@ def count_bar(data, name, color_set=custom_bw,
     """Make a univariate distribution
     of a variable.
 
-    Returns an object to be plotted.
+    Parameters
+    ----------
+    data : array_like
+        List, pandas series, pandas dataframe column.
+        Should be an array of categories.
+        Sum of categories will be counted by the function.
+    name : string
+        String describing the input data
+    color_set : list
+        List of four colors that are compatible with
+        matplotlib
+    ax_size : tuple
+        tuple containing ax size. First value is
+        width, second value is height.
+    highlight : int
+        defaults to None.
+        interger giving reference to a category
+        and it´s bar to apply a highlight colour.
+    ax : matplotlib axes
+        axes of the figure in which the figure
+        will be created, to be used with figures
+        with more than one subplot.
+        None means it will plot by itself.
+
+    Returns
+    -------
+    fig : matplotlib axes
+        returns an axes to reference to
+        the created figure.
     """
 
     common_set_up(ax_size)  # Apply basic plot style
 
-    fig = sns.countplot(data, saturation=1, ax=ax,
-                        color=color_set[2], label=name,
+    # Categories sum will be counted in countplot
+    fig = sns.countplot(
+                        data,
+                        saturation=1,
+                        ax=ax,
+                        color=color_set[2],
+                        label=name,
                         )
 
     sns.despine(offset=2, trim=True, left=True, bottom=True)
@@ -580,13 +604,21 @@ def count_bar(data, name, color_set=custom_bw,
     title_color = '#192231'
     font_colour = '#9099A2'
     if ax is None:
-        fig.set_title('{0}'.format(name),
-                      fontsize=20, color=title_color)
-    fig.set_ylabel('Frequency',
-                   color=font_colour)
-    fig.set_xlabel('{0}'.format(name),
-                   color=font_colour)
+        fig.set_title(
+                      '{0}'.format(name),
+                      fontsize=20,
+                      color=title_color
+                      )
+    fig.set_ylabel(
+                   'Frequency',
+                   color=font_colour
+                   )
+    fig.set_xlabel(
+                   '{0}'.format(name),
+                   color=font_colour
+                   )
 
+    # Apply a highlight color to specified category
     if highlight:
         bars = fig.patches
         bars[highlight].set_color(color_set[1])
@@ -633,8 +665,60 @@ def univariate_overdispersed(x, univariate_name, transform='log_10',
                              ax_size=(12, 6), funky=False, rug=False,
                              formatting_right=True, x_truncation_upper=None,
                              x_truncation_lower=None,  ax=None):
-    """Retrun plot using data transformation to correct
+    """
+    Plot a hitogram and KDE plot while
+    using a data transformation to correct
     for overdispersed data.
+
+    Parameters
+    ----------
+    x : array_like
+        List, pandas series, pandas dataframe column.
+        Should be an array of categories.
+        Sum of categories will be counted by the function.
+    univariate_name : string
+        String describing the input data
+    transform : string
+        String setting which transform.
+        Options are 'log_10' or 'sqrt'.
+    color_set : list
+        list of colors, compatible with matplotlib.
+    bin_n : string/None/int
+        Default is 'all_values' which calculates
+        the range of values to be used as the number
+        of bins.
+        None means automatic selection.
+        Interger will set bin numbers manually.
+    ax_size : tuple
+        tuple containing ax size. First value is
+        width, second value is height.
+    rug : boolean
+        True uses rug, False turns it off
+    formatting_right : boolean
+        True is place parameters on right of figure.
+        False places them to the left of figure.
+    x_truncation_upper : None/int/float
+        Number to set upper limit of the x-axis.
+        None means automatically set.
+    x_truncation_lower : None/int/float
+        Number to set lower limit of the x-axis.
+        None means automatically set.
+    ax : matplotlib axes
+        axes of the figure in which the figure
+        will be created, to be used with figures
+        with more than one subplot.
+        None means it will plot by itself.
+
+    See Also
+    --------
+    univaraite
+
+    Returns
+    -------
+    fig : matplotlib axes
+        Will plot an individual figure or ax
+        can be reused within a figure containing
+        more than one subplot.
     """
 
     if bin_n == 'all_values':
@@ -660,22 +744,111 @@ def univariate_overdispersed(x, univariate_name, transform='log_10',
     return fig
 
 
-def dist_transform_plot(x, univariate_name, fig_size=(18, 16), color_set=custom_bw, bin_n='all_values', ax_size=(12, 6), funky=False, rug=True, formatting_right=True, x_truncation_upper=None, x_truncation_lower=None, ax=None):
-    """Returns a plot including
-    three individual plots alligned
-    as three rows based on two data
-    transforms.
+def dist_transform_plot(x, univariate_name, fig_size=(18, 16),
+                        color_set=custom_bw, bin_n='all_values',
+                        ax_size=(12, 6), rug=True,
+                        formatting_right=True, x_truncation_upper=None,
+                        x_truncation_lower=None, ax=None):
+    """
+    Plot a set of three hitogram and KDE plots while
+    using a data transformations to correct
+    for overdispersed data.
+
+    Will give one original plot, one with a square root,
+    and a final plot with log 10 transformation.
+
+    Parameters
+    ----------
+    x : array_like
+        List, pandas series, pandas dataframe column.
+        Should be an array of categories.
+        Sum of categories will be counted by the function.
+    univariate_name : string
+        String describing the input data
+    fig_size : tuple
+        tuple containing ax size. First value is
+        width, second value is height.
+    color_set : list
+        list of colors, compatible with matplotlib.
+    bin_n : string/None/int
+        Default is 'all_values' which calculates
+        the range of values to be used as the number
+        of bins.
+        None means automatic selection.
+        Interger will set bin numbers manually.
+    ax_size : tuple
+        tuple containing ax size. First value is
+        width, second value is height.
+    rug : boolean
+        True uses rug, False turns it off
+    formatting_right : boolean
+        True is place parameters on right of figure.
+        False places them to the left of figure.
+    x_truncation_upper : None/int/float
+        Number to set upper limit of the x-axis.
+        None means automatically set.
+    x_truncation_lower : None/int/float
+        Number to set lower limit of the x-axis.
+        None means automatically set.
+    ax : matplotlib axes
+        axes of the figure in which the figure
+        will be created, to be used with figures
+        with more than one subplot.
+        None means it will plot by itself.
+
+    See Also
+    --------
+    univariate_overdispersed : used within function
+    univaraite : used within univariate_overdispersed
+
+
+    Returns
+    -------
+    fig : matplotlib axes
+        Will plot an individual figure or ax
+        can be reused within a figure containing
+        more than one subplot.
     """
 
     common_set_up(fig_size)
 
-    fig_plot, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(fig_size), facecolor='white')
-    fig_plot.suptitle("Distribution of {0}".format(univariate_name), fontsize=16)
+    fig_plot, (ax1, ax2, ax3) = plt.subplots(
+                                             3, 1,  # 3 rows, 1 column
+                                             figsize=(fig_size),
+                                             facecolor='white'
+                                             )
+    # Title on top of all subplots
+    fig_plot.suptitle(
+                      "Distribution of {0}".format(univariate_name),
+                      fontsize=16
+                      )
+
+    # Positional adjustments to make title fit nicely
     fig_plot.subplots_adjust(hspace=0.18, top=0.95)
 
-    univariate_overdispersed(x, univariate_name, transform=None, color_set=color_set, bin_n=bin_n, ax_size=ax_size, funky=funky, rug=rug, formatting_right=formatting_right, x_truncation_upper=x_truncation_upper, x_truncation_lower=x_truncation_lower, ax=ax1)
-    univariate_overdispersed(x, univariate_name, transform='sqrt', color_set=color_set, bin_n=bin_n, ax_size=ax_size, funky=funky, rug=rug, formatting_right=formatting_right, x_truncation_upper=x_truncation_upper, x_truncation_lower=x_truncation_lower, ax=ax2)
-    univariate_overdispersed(x, univariate_name, transform='log_10', color_set=color_set, bin_n=bin_n, ax_size=ax_size, funky=funky, rug=rug, formatting_right=formatting_right, x_truncation_upper=x_truncation_upper, x_truncation_lower=x_truncation_lower, ax=ax3)
+    univariate_overdispersed(x, univariate_name, transform=None,
+                             color_set=color_set, bin_n=bin_n,
+                             ax_size=ax_size, rug=rug,
+                             formatting_right=formatting_right,
+                             x_truncation_upper=x_truncation_upper,
+                             x_truncation_lower=x_truncation_lower,
+                             ax=ax1)
+
+    univariate_overdispersed(x, univariate_name, transform='sqrt',
+                             color_set=color_set, bin_n=bin_n,
+                             ax_size=ax_size, rug=rug,
+                             formatting_right=formatting_right,
+                             x_truncation_upper=x_truncation_upper,
+                             x_truncation_lower=x_truncation_lower,
+                             ax=ax2)
+
+    univariate_overdispersed(x, univariate_name, transform='log_10',
+                             color_set=color_set, bin_n=bin_n,
+                             ax_size=ax_size, rug=rug,
+                             formatting_right=formatting_right,
+                             x_truncation_upper=x_truncation_upper,
+                             x_truncation_lower=x_truncation_lower,
+                             ax=ax3)
 
     sns.despine(offset=2, trim=True, left=True, bottom=True)
 
