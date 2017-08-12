@@ -11,41 +11,45 @@ Where do the best baseball players come from?
 
 Will a baseball player birth location or college location relate to salary, or awards?
 
-This is a brief exploration of large database on baseball players.
 
-This report covers:
-
-* Data Examination
-
-* Data Analysis
-
-* Conclusions
-
-Detailed information is also presented on the full data processing workflow:
-
-* Approach to data processing
-
-* Data processing workflow
-
-Getting Started
+Getting started
 ---------------
 
-To recreate the study use the `Data Examination notebook <>`_ and
-the `Exporatory Data Analysis notebook <>`_.
+Run,
 
-These both use the Baseball_data_investigation.py script to
-pre-process and concatenate six seperate csv files frome the
-database into a single file for analysis.
+.. code-block:: bash
 
-This includes using Pandas and Numpy to create new attributes
-from the data to aid in the analysis.
+    $ Baseball_data_investigation.py
 
-For example counting how many times each player has been in an all star
-match.
+To downdload the dataset, 
+and process it into one table tailored for this projects question.
 
-.. code-block:: python
+Or see the notebooks to view and run
+the `data examination <>`_ and prelimary `data analysis <>`_.
 
-    df_times_allstar = df_allstar['playerID'].value_counts()
+Approach to answer question
+---------------------------
+
+Attributes will be needed to describe the location each player is from, these will form independent variables.
+
+These will give a variety of values about where the player came from. However it boils down to two
+independent variables, college location and birth location. These variables have different scales
+i.e. country, state, city. The right granualarity will need to be choosen.
+
+To use more independent variables height and weight can also be investigated.
+
+Salaries, AwardsPlayers, AllStarFull and/or HallofFame can be used to give an indication to the quality of the player.
+Any of these can be used as a dependent variable or a dependent variable could be create out of a combination
+of these variables.
+
+The data-set has been processed using numpy and pandas to clean, create new variables and
+merge tables together. See further into the report for a section on data processing.
+See the pre-processing module for the code used.
+
+An examination of the data will be described followed by data analysis and conclusions.
+The data analysis is not exhaustive so observations to do not lead to robust conclusions in
+this report. Any inference is tentative and would require further work to become robust.
+
 
 Data Examination
 ----------------
@@ -134,6 +138,98 @@ Data Analysis
 
 Conclusions
 -----------
+
+Data Analysis
+-------------
+
+The following section is a brief, preliminary data analysis. This is not
+a thorough exploratory data analysis or a more sophisticated data analysis
+to test any hypothesese in the data.
+
+The question is related to the effect of geographic location
+on the quality of base ball players.
+
+To begin an different independent variable can be compared to the
+dependent variables to see if there are no relationships. Height
+and weight would not be expected to have a strong correlation
+to dependent variables.
+
+Height vs. weight, two independent shows a strong correlation.
+
+.. image:: resources\images\height_index.png
+   :scale: 100 %
+
+When comparing one of these independent variables
+to a dependent variable like the mean career salary
+there is little correlation. The distribution reflects
+the normal distribution of the weight variable.
+
+.. image:: resources\images\weight_salary.png
+   :scale: 100 %
+
+This is one example where there is not a strong relationship,
+the Pearson correlation coefficient is only 0.18.
+
+Before investigating the geography of a player the
+dependent variables can be compared to each other.
+There are a few options here from salary, allstar counts and
+award counts that can be compared to the independent variables.
+
+The mean career salary and max ever career salary
+are compared in the next plot. These show a strong
+correlation. Note all these plots ommit players
+who do not have both of the variables recorded.
+
+.. image:: resources\images\mean_max.png
+   :scale: 100 %
+
+The mean annually standardized career salary compared
+to the max standardized career salary shows a similar
+relationship with a slight curve upwards towards
+max salary.
+
+.. image:: resources\images\mean_max_std.png
+   :scale: 100 %
+
+Comparing award count to allstar
+count there is a correlation that scores
+0.7 on the pearson correlation coefficient.
+
+.. image:: resources\images\award_allstar.png
+   :scale: 100 %
+
+The independent variables of a players birth
+state and college state are used to describe
+their geographic origins. State is choosen
+as city is too granular.
+
+The two bar charts show the mean of all players mean
+career salary in a state. It also includes a 95%
+confidence interval.
+
+.. image:: resources\images\Bar_max_salary_birth.png
+   :scale: 100 %
+
+.. image:: resources\images\Bar_max_salary_college.png
+   :scale: 100 %
+
+The next two images use box plots to describe the
+distribution of max salary standardized annually
+by birth state and college state. The limitation
+of this plot is that there are different
+numbers within each state making the distribution
+of values challenging to interpret.
+
+.. image:: resources\images\box_birth.png
+   :scale: 100 %
+
+.. image:: resources\images\box_college.png
+   :scale: 100 %
+
+Conclusions
+-----------
+
+
 
 Data processing
 ---------------
@@ -267,26 +363,23 @@ Performance statistics like Batting or Fielding could be used but will be left o
 Resources used
 --------------
 
-PandasAPI_.
+Pandas `API <https://pandas.pydata.org/pandas-docs/stable/api.html>`_
 
-.. _PandasAPI: https://pandas.pydata.org/pandas-docs/stable/api.html
+Seaborn `Tutorial <https://seaborn.pydata.org/tutorial/distributions.html>`_
 
-.. _Seaborn Tutorial:
-https://seaborn.pydata.org/tutorial/distributions.html
+How to change `x and y limits with seaborn <https://stackoverflow.com/questions/25212986/how-to-set-some-xlim-and-ylim-in-seaborn-lmplot-facetgrid>`_
 
-.. _How to change x and y limits with seaborn:
-https://stackoverflow.com/questions/25212986/how-to-set-some-xlim-and-ylim-in-seaborn-lmplot-facetgrid
+matplotlib `api <https://matplotlib.org/api/index.html>`_
 
-.. _matplotlib api:
-https://matplotlib.org/api/index.html
-
-.. _reStructeredText style guide:
-http://docs.python-guide.org/en/latest/notes/styleguide/
+reStructeredText `style guide. <http://docs.python-guide.org/en/latest/notes/styleguide/>`_
 
 StackOverFlow for number of times a value occurs in a column query - `Link <https://stackoverflow.com/questions/22391433/count-the-frequency-that-a-value-occurs-in-a-dataframe-column>`_
  
-StackOverflow how to transpose a dataset using groupby query - `Link <https://stackoverflow.com/questions/38369424/groupby-transpose-and-append-in-pandas>`_
+StackOverflow how to transpose a dataset using groupby query - Link_
 
-Code block for download_progress_hook() was taken from Udacity `Tensorflow Example notebook <https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/1_notmnist.ipynb>`_
+.. _Link: https://stackoverflow.com/questions/38369424/groupby-transpose-and-append-in-pandas
 
-Color choice for charts `Line <https://designschool.canva.com/blog/website-color-schemes/>`_
+Code block for download_progress_hook() was taken from `Udacity Tensorflow Example notebook. <https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/udacity/1_notmnist.ipynb>`_
+
+`Color choice for charts <https://designschool.canva.com/blog/website-color-schemes/>`_
+

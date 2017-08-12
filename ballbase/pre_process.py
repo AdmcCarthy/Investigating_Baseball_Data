@@ -35,6 +35,9 @@ def standarize_column(column):
 
 def gpby_tranpose_stats(df, group, column):
     """
+    Switch data from long to wide format. The calculate
+    descriptive measurements while in wide format.
+
     Groupby column values, 'group', then tranpose
     a set of values, 'column' on a dataframe.
 
@@ -93,7 +96,11 @@ def gpby_tranpose_stats(df, group, column):
 
 
 def gpby_tranpose_college(df, group, column):
-    """Groupby a column (group), then tranpose
+    """
+    Switch data from long to wide format. The calculate
+    descriptive measurements while in wide format.
+
+    Groupby a column (group), then tranpose
     a set of values (column) on a dataframe (df).
 
     This will create a series of columns for all

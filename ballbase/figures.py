@@ -551,10 +551,10 @@ def qq_plot_var(data_a, data_b, name_a, name_b, ax_size=(7, 7), fit_zero=True):
     return ax
 
 
-def count_bar(data, name, color_set=custom_bw, ax_size=(20, 6),
-              highlight=None, ax=None):
-    """Creates a bar graph based on the number of
-    occurences of a category.
+def count_bar(data, name, color_set=custom_bw,
+              ax_size=(20, 6), highlight=None, ax=None):
+    """Make a univariate distribution
+    of a variable.
 
     Parameters
     ----------
@@ -626,11 +626,45 @@ def count_bar(data, name, color_set=custom_bw, ax_size=(20, 6),
     return fig
 
 
+def bar(variable, name, data=None, x_v=None, color_set=custom_bw,
+        ax_size=(20, 6), highlight=None, ax=None):
+    """Make a univariate distribution
+    of a variable.
+
+    Returns an object to be plotted.
+    """
+
+    common_set_up(ax_size)  # Apply basic plot style
+
+    fig = sns.barplot(x=x_v, y=variable, data=data, saturation=1, ax=ax,
+                        color=color_set[2], label=name,
+                        )
+
+    sns.despine(offset=2, trim=True, left=True, bottom=True)
+
+    # Set title and axes
+    title_color = '#192231'
+    font_colour = '#9099A2'
+    if ax is None:
+        fig.set_title('{0}'.format(name),
+                      fontsize=20, color=title_color)
+    fig.set_ylabel('Frequency',
+                   color=font_colour)
+    fig.set_xlabel('{0}'.format(name),
+                   color=font_colour)
+
+    if highlight:
+        bars = fig.patches
+        bars[highlight].set_color(color_set[1])
+
+    return fig
+
+
 def univariate_overdispersed(x, univariate_name, transform='log_10',
                              color_set=custom_bw, bin_n='all_values',
-                             ax_size=(12, 6), rug=False, formatting_right=True,
-                             x_truncation_upper=None, x_truncation_lower=None,
-                             ax=None):
+                             ax_size=(12, 6), funky=False, rug=False,
+                             formatting_right=True, x_truncation_upper=None,
+                             x_truncation_lower=None,  ax=None):
     """
     Plot a hitogram and KDE plot while
     using a data transformation to correct
@@ -701,9 +735,9 @@ def univariate_overdispersed(x, univariate_name, transform='log_10',
         x = x.apply(sq_rt)
         univariate_name = univariate_name + ' square root'
 
-    fig = univariate(x, univariate_name, color_set=color_set,
-                     bin_n=bin_n, ax_size=ax_size,
-                     rug=rug, formatting_right=formatting_right,
+    fig = univariate(x, univariate_name, color_set=custom_bw, bin_n=bin_n,
+                     ax_size=ax_size, funky=funky, rug=rug,
+                     formatting_right=formatting_right,
                      x_truncation_upper=x_truncation_upper,
                      x_truncation_lower=x_truncation_lower, ax=ax)
 
@@ -819,3 +853,65 @@ def dist_transform_plot(x, univariate_name, fig_size=(18, 16),
     sns.despine(offset=2, trim=True, left=True, bottom=True)
 
     return fig_plot
+
+
+def frequency_polygon(x, name, categorical_v=None, color_set=custom_bw, proportion=False, ax_size=(10, 5), formatting_right=True, x_truncation_upper=None, x_truncation_lower=None, ax=None):
+    """
+    Returns a frequency polygon
+    plot which can be used with catergorical
+    data to show difference between categories.
+    """
+
+    common_set_up(ax_size)
+
+    x_max = x.max()
+    x_min = x.min()
+    bin_n = int(x_max)-int(x_min)
+
+    # Get height and a position form a histogram
+    # to be turned into point for frequency polygon
+    y, bin_bounds = np.histogram(x, bins=bin_n)
+    bin_edge = bin_bounds[:-1]
+
+    if proportion:
+        x_size = len(x)
+        y = y/x_size
+        y_str = "Proportion"
+    else:
+        y_str = "Frequency"
+
+    fig = sns.pointplot(bin_edge, y, color='#192231', scale=0.3, marker='.')
+
+    title_color = '#192231'
+    font_colour = '#9099A2'
+
+    # Do not add a title in a multi-figure plot.
+    #
+    # Title will be added to figure with all sub-plots
+    # instead in this case
+    if ax is None: 
+        fig.set_title(('Frequency polygon of {0}'.format(name)),
+                       fontsize=20, color=title_color)
+    fig.set_xlabel('{0}'.format(name),
+                   color=font_colour)
+    fig.set_ylabel(y_str.format(name),
+                   color=font_colour)
+
+    # Limit the x axis by truncating
+    if x_truncation_upper or x_truncation_lower:
+        axes = fig.axes
+        fig.set_xlim(x_truncation_lower, x_truncation_upper)
+        # To be communicated back in Formatting notes
+        x_truncation_upper_str = 'x axis truncated by {0}\n'.format(x_truncation_upper)
+        x_truncation_lower_str = 'x axis truncated after {0}\n'.format(x_truncation_lower)
+
+        parameters = ('Formatting:\n'
+                      + x_truncation_lower_str
+                      + x_truncation_upper_str)
+
+        fig = formatting_text_box(fig, parameters, formatting_right)
+
+    # Will not work on multiple subplots within a figure
+    if ax is None:
+        # Seaborn despine to remove boundaries around plot
+        sns.despine(offset=2, trim=True, left=True, bottom=True)
