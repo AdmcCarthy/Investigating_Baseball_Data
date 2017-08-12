@@ -594,6 +594,40 @@ def count_bar(data, name, color_set=custom_bw,
     return fig
 
 
+def bar(variable, name, data=None, x_v=None, color_set=custom_bw,
+        ax_size=(20, 6), highlight=None, ax=None):
+    """Make a univariate distribution
+    of a variable.
+
+    Returns an object to be plotted.
+    """
+
+    common_set_up(ax_size)  # Apply basic plot style
+
+    fig = sns.barplot(x=x_v, y=variable, data=data, saturation=1, ax=ax,
+                        color=color_set[2], label=name,
+                        )
+
+    sns.despine(offset=2, trim=True, left=True, bottom=True)
+
+    # Set title and axes
+    title_color = '#192231'
+    font_colour = '#9099A2'
+    if ax is None:
+        fig.set_title('{0}'.format(name),
+                      fontsize=20, color=title_color)
+    fig.set_ylabel('Frequency',
+                   color=font_colour)
+    fig.set_xlabel('{0}'.format(name),
+                   color=font_colour)
+
+    if highlight:
+        bars = fig.patches
+        bars[highlight].set_color(color_set[1])
+
+    return fig
+
+
 def univariate_overdispersed(x, univariate_name, transform='log_10',
                              color_set=custom_bw, bin_n='all_values',
                              ax_size=(12, 6), funky=False, rug=False,
