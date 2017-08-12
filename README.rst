@@ -160,7 +160,7 @@ to dependent variables.
 Height vs. weight, two independent shows a strong correlation.
 
 .. image:: resources\images\height_index.png
-   :scale: 100 %
+   :scale: 50 %
 
 When comparing one of these independent variables
 to a dependent variable like the mean career salary
@@ -168,7 +168,7 @@ there is little correlation. The distribution reflects
 the normal distribution of the weight variable.
 
 .. image:: resources\images\weight_salary.png
-   :scale: 100 %
+   :scale: 50 %
 
 This is one example where there is not a strong relationship,
 the Pearson correlation coefficient is only 0.18.
@@ -184,7 +184,7 @@ correlation. Note all these plots ommit players
 who do not have both of the variables recorded.
 
 .. image:: resources\images\mean_max.png
-   :scale: 100 %
+   :scale: 50 %
 
 The mean annually standardized career salary compared
 to the max standardized career salary shows a similar
@@ -192,14 +192,14 @@ relationship with a slight curve upwards towards
 max salary.
 
 .. image:: resources\images\mean_max_std.png
-   :scale: 100 %
+   :scale: 50 %
 
 Comparing award count to allstar
 count there is a correlation that scores
 0.7 on the pearson correlation coefficient.
 
 .. image:: resources\images\award_allstar.png
-   :scale: 100 %
+   :scale: 50 %
 
 The independent variables of a players birth
 state and college state are used to describe
@@ -227,6 +227,15 @@ of values challenging to interpret.
    :scale: 100 %
 
 .. image:: resources\images\box_college.png
+   :scale: 100 %
+
+To compare both categorical variables of college and birth
+state along with a third variable a heat map can be used.
+
+.. image:: resources\images\heatmap.png
+   :scale: 100 %
+
+.. image:: resources\images\heatmap_max_salary.png
    :scale: 100 %
 
 Conclusions
