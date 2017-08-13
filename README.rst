@@ -25,7 +25,7 @@ To download the dataset,
 and process it into one table tailored for this projects question.
 
 Or see the notebooks to view and run
-the `data examination <>`_ and preliminary `data analysis <>`_.
+the `data examination <https://github.com/AdmcCarthy/Investigating_Baseball_Data/blob/master/resources/ipython%20notebook/Data%20Examination%20for%20Baseball%20Database.ipynb>`_ and preliminary `data analysis <https://github.com/AdmcCarthy/Investigating_Baseball_Data/blob/master/resources/ipython%20notebook/Data%20Analysis%20of%20Baseball%20Data.ipynb>`_.
 
 Approach to answer question
 ---------------------------
@@ -61,7 +61,7 @@ Some datasets display issues regarding how the values are populated
 .. figure:: resources\images\Weight_all_data.png
    :height: 200px
    :width: 200 px
-   :scale: 100 %
+   :scale: 50 %
 
    Fig._. Distribution of Weight in pounds for entire dataset
 
@@ -76,7 +76,7 @@ Another common theme is highly skewed datasets.
 .. figure:: resources\images\mean_salary_transform.png
    :height: 200px
    :width: 200 px
-   :scale: 100 %
+   :scale: 50 %
 
    Fig._. Distribution of mean career salary
 
@@ -88,7 +88,7 @@ Some extreme outliers occur within the data
 .. figure:: resources\images\Weight_2_all_data.png
    :height: 200px
    :width: 200 px
-   :scale: 100 %
+   :scale: 50 %
 
    Fig._. Distribution of Weight in pounds for entire dataset
 
@@ -96,19 +96,21 @@ Using weight again, but now with a rug plot to highlight where values occur.
 The minimum weight value can be viewed (see annotation) as an isolated occurrence. The minimum weight is 65 pounds which are dramatically different than the rest of the sample.
 
 This value can be found to be paired to a height of 43 inches and corresponds to
-Eddie Gaedel. This extreme outlier in both weight and height is a real occurrence!
-
-https://en.wikipedia.org/wiki/Eddie_Gaedel
+`Eddie Gaedel <https://en.wikipedia.org/wiki/Eddie_Gaedel>`_. This extreme outlier in both weight and height is a real occurrence!
 
 The majority of baseball players are born in the USA.
 
 .. figure:: resources\images\USA_birth.png
-   :scale: 100 %
+   :height: 100px
+   :width: 100 px
+   :scale: 50 %
 
    Fig._. Binary plot showing ratio of players born in the USA using the total data set
 
 .. figure:: resources\images\College_USA.png
-   :scale: 100 %
+   :height: 100px
+   :width: 100 px
+   :scale: 50 %
 
    Fig._. Binary plot showing ratio of player´s College being in the USA using investigation dataset
 
@@ -128,12 +130,16 @@ variety across the other states, the two count bar graphs do not give any inform
 how related a birth State and college State is.
 
 .. figure:: resources\images\Birth_state_count.png
-   :scale: 100 %
+   :height: 50px
+   :width: 100 px
+   :scale: 50 %
 
    Fig._. Bar graph showing the count of player´s Birth State location.
 
 .. figure:: resources\images\College_state_count.png
-   :scale: 100 %
+   :height: 50px
+   :width: 100 px
+   :scale: 50 %
 
    Fig._. Bar graph showing the count of player´s mode College State location.
 
@@ -157,6 +163,8 @@ to dependent variables.
 Height vs. weight, two independent shows a strong correlation.
 
 .. image:: resources\images\height_index.png
+   :height: 100px
+   :width: 100 px
    :scale: 50 %
 
 When comparing one of these independent variables
@@ -165,6 +173,8 @@ there is little correlation. The distribution reflects
 the normal distribution of the weight variable.
 
 .. image:: resources\images\weight_salary.png
+   :height: 100px
+   :width: 100 px
    :scale: 50 %
 
 This is one example where there is not a strong relationship,
@@ -181,6 +191,8 @@ correlation. Note all these plots omit players
 who do not have both of the variables recorded.
 
 .. image:: resources\images\mean_max.png
+   :height: 100px
+   :width: 100 px
    :scale: 50 %
 
 The mean annually standardized career salary compared
@@ -189,6 +201,8 @@ relationship with a slight curve upwards towards
 max salary.
 
 .. image:: resources\images\mean_max_std.png
+   :height: 100px
+   :width: 100 px
    :scale: 50 %
 
 Comparing award count to Allstar
@@ -196,6 +210,8 @@ count there is a correlation that scores
 0.7 on the Pearson correlation coefficient.
 
 .. image:: resources\images\award_allstar.png
+   :height: 100px
+   :width: 100 px
    :scale: 50 %
 
 The independent variables of a players birth
@@ -208,10 +224,14 @@ career salary in a state. It also includes a 95%
 confidence interval.
 
 .. image:: resources\images\Bar_max_salary_birth.png
-   :scale: 100 %
+   :height: 50px
+   :width: 100 px
+   :scale: 50 %
 
 .. image:: resources\images\Bar_max_salary_college.png
-   :scale: 100 %
+   :height: 50px
+   :width: 100 px
+   :scale: 50 %
 
 The next two images use box plots to describe the
 distribution of max salary standardized annually
@@ -221,10 +241,14 @@ numbers within each state making the distribution
 of values challenging to interpret.
 
 .. image:: resources\images\box_birth.png
-   :scale: 100 %
+   :height: 50px
+   :width: 100 px
+   :scale: 50 %
 
 .. image:: resources\images\box_college.png
-   :scale: 100 %
+   :height: 50px
+   :width: 100 px
+   :scale: 50 %
 
 To compare both categorical variables of college and birth
 state along with a third variable a heat map can be used.
@@ -244,7 +268,9 @@ marking the times when a player goes to college
 in the same state, they were born in.
 
 .. image:: resources\images\heatmap_allstar.png
-   :scale: 100 %
+   :height: 200px
+   :width: 200 px
+   :scale: 50 %
 
 California (CA), Arizona (AZ) and Texas (TX) all
 show that they have colleges that have taken
@@ -279,7 +305,9 @@ each have players born in a wide range of states, each has players
 born in almost every state.
 
 .. image:: resources\images\heatmap_max_salary.png
-   :scale: 100 %
+   :height: 200px
+   :width: 200 px
+   :scale: 50 %
 
 North Carolina as a college state has more negative values than most
 other college states.
@@ -346,7 +374,9 @@ Each file will be concatenated into the index of College Location, therefore red
 College information is available.
 
 .. figure:: resources\images\Distribution_of_Birth_Year_All_data.png
-   :scale: 100 %
+   :height: 200px
+   :width: 200 px
+   :scale: 50 %
 
    Fig.1. Distribution of Birth Year for entire dataset
 
@@ -359,7 +389,9 @@ After selecting only data with information about which college was attended ther
 6575 values and a difference in the distribution.
 
 .. figure:: resources\images\Distribution_of_birth_year_final_data.png
-   :scale: 100 %
+   :height: 200px
+   :width: 200 px
+   :scale: 50 %
 
    Fig.2. Distribution of Birth Year for data used here
 
