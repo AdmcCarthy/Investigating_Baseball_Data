@@ -25,7 +25,7 @@ To download the dataset,
 and process it into one table tailored for this projects question.
 
 Or see the notebooks to view and run
-the `data examination <>`_ and preliminary `data analysis <>`_.
+the `data examination <https://github.com/AdmcCarthy/Investigating_Baseball_Data/blob/master/resources/ipython%20notebook/Data%20Examination%20for%20Baseball%20Database.ipynb>`_ and preliminary `data analysis <https://github.com/AdmcCarthy/Investigating_Baseball_Data/blob/master/resources/ipython%20notebook/Data%20Analysis%20of%20Baseball%20Data.ipynb>`_.
 
 Approach to answer question
 ---------------------------
@@ -96,9 +96,7 @@ Using weight again, but now with a rug plot to highlight where values occur.
 The minimum weight value can be viewed (see annotation) as an isolated occurrence. The minimum weight is 65 pounds which are dramatically different than the rest of the sample.
 
 This value can be found to be paired to a height of 43 inches and corresponds to
-Eddie Gaedel. This extreme outlier in both weight and height is a real occurrence!
-
-https://en.wikipedia.org/wiki/Eddie_Gaedel
+`Eddie Gaedel <https://en.wikipedia.org/wiki/Eddie_Gaedel>`_. This extreme outlier in both weight and height is a real occurrence!
 
 The majority of baseball players are born in the USA.
 
