@@ -136,12 +136,6 @@ Birth city has 2208 unique values in the investigation dataset while college cit
 Data Analysis
 -------------
 
-Conclusions
------------
-
-Data Analysis
--------------
-
 The following section is a brief, preliminary data analysis. This is not
 a thorough exploratory data analysis or a more sophisticated data analysis
 to test any hypothesese in the data.
@@ -228,17 +222,94 @@ of values challenging to interpret.
 
 To compare both categorical variables of college and birth
 state along with a third variable a heat map can be used.
+This allows for relationships and trends between the two
+independent variables to be studied. For example how many
+of those born in a state remain in the same state for college.
 
-.. image:: resources\images\heatmap.png
+The first heatmap shows only players who have been present in
+an allstar match. The scale is fitted using quantiles so does not
+show the full range of occurences but rather gives a feel
+for where there are more allstar players. For each
+pair of states the nuber of allstar matches players
+have played in are summed.
+
+The first thing that stands out is the diagonal
+marking the times when a player goes to college
+in the same state they were born in.
+
+.. image:: resources\images\heatmap_allstar.png
    :scale: 100 %
+
+California (CA), Arizona (AZ) and Texas (TX) all
+show that they have colleges that have taken
+all star players born in other states. In the case
+of California because there is such a high count of players
+from this state there are also a number of all star players
+being born in California and going on to study in different
+states. Arizona is an interesting state in which it has
+players attending college from other states but no allstar
+players born in Arizona leave for other colleges in other
+states.
+
+The final heatmap shows a sum of all players annually
+standardised max salary compared to birth state and 
+college state. A divergent color scale is used to
+show if it is positive or negative, however, keep in mind
+this is is the sum of all players in the pair of states
+so states with very few players compared to pairs of states with
+a much higher number of players will act differently.
+An extremely high or low value may just be that there is only
+one player from that state. This is a flaw in the plot
+but at this stage in the investigation the sum gives
+an impression if there are any general trends regarding
+baseball players from those states.
+
+The figure highlights the same diagonal trend of players
+attending college in the same state they were born in.
+
+For college state California (CA), Florida (FL), 
+NC (North Carolina)and Texas (TX)
+each have players born in a wide range of states, each has players
+born in almost every state.
 
 .. image:: resources\images\heatmap_max_salary.png
    :scale: 100 %
 
+North Carolina as a college state has more negative values than most
+other college states.
+
+California has the most positive values compared to other college
+states.
+
+This could be continued by taking samples of players from
+different states and designing a hypothesis test to investigate
+if there is a statistically significant difference between
+these groups.
+
 Conclusions
 -----------
 
+This analysis is not thorough so any conclusions are tentative.
+The project asked the question where do the best base ball players
+come from.
 
+The majority of base ball players come from within the USA.
+California is where the most base ball players have been
+born and where most have gone to college.
+
+The majority of baseball players have attended college in
+the same state they were born in.
+
+There are differences between states in the typical quality
+of baseball players, however this also relates to the number
+of players coming from or studying in each state.
+
+Height and weight to not show strong relationships to the
+quality of a player.
+
+Quality of player could be defined as a combination of variables,
+this analysis could use formal statistical tests to take
+these ideas further.
 
 Data processing
 ---------------
