@@ -59,6 +59,8 @@ Overall the dataset is well organised and good to use.
 Some datasets display issues regarding how the values are populated
 
 .. figure:: resources\images\Weight_all_data.png
+   :height: 200px
+   :width: 200 px
    :scale: 100 %
 
    Fig._. Distribution of Weight in pounds for entire dataset
@@ -72,6 +74,8 @@ a higher granularity. A solution to this issue would be to bin weight or similar
 Another common theme is highly skewed datasets.
 
 .. figure:: resources\images\mean_salary_transform.png
+   :height: 200px
+   :width: 200 px
    :scale: 100 %
 
    Fig._. Distribution of mean career salary
@@ -82,6 +86,8 @@ of values towards the maximum value. The number of appearances in All Star match
 Some extreme outliers occur within the data
 
 .. figure:: resources\images\Weight_2_all_data.png
+   :height: 200px
+   :width: 200 px
    :scale: 100 %
 
    Fig._. Distribution of Weight in pounds for entire dataset
