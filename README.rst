@@ -15,6 +15,8 @@ Will a baseball player´s birth location or college location relate to salary or
 Getting started
 ---------------
 
+Read this README or the same information in the notebook `report <https://github.com/AdmcCarthy/Investigating_Baseball_Data/blob/master/resources/ipython%20notebook/Baseball%20Report.ipynb>`_
+
 Run,
 
 .. code-block:: bash
