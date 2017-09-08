@@ -662,7 +662,7 @@ def bar(variable, name, data=None, x_v=None, color_set=custom_bw,
 
 def univariate_overdispersed(x, univariate_name, transform='log_10',
                              color_set=custom_bw, bin_n='all_values',
-                             ax_size=(12, 6), funky=False, rug=False,
+                             ax_size=(12, 6), rug=False,
                              formatting_right=True, x_truncation_upper=None,
                              x_truncation_lower=None,  ax=None):
     """
@@ -736,7 +736,7 @@ def univariate_overdispersed(x, univariate_name, transform='log_10',
         univariate_name = univariate_name + ' square root'
 
     fig = univariate(x, univariate_name, color_set=custom_bw, bin_n=bin_n,
-                     ax_size=ax_size, funky=funky, rug=rug,
+                     ax_size=ax_size, rug=rug,
                      formatting_right=formatting_right,
                      x_truncation_upper=x_truncation_upper,
                      x_truncation_lower=x_truncation_lower, ax=ax)
